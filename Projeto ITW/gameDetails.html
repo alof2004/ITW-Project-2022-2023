@@ -39,6 +39,7 @@
                     <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
                     <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
                     <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                    <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
                     <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -122,14 +123,6 @@
             </div>
         </div>
       
-        <div class="row border-bottom mx-0 my-1">
-                <div class="col-2">Modalidades</div>
-            <div class="col-10" data-bind="foreach: Modalities">
-                <a class="btn margin-left slide" style="border-color:black; height:40px; width:150px;" data-bind="attr: { href: './ModalitiesDetails.html?id='+Id }">
-                <div data-bind="text: Name"></div>
-                </a>
-            </div>
-        </div>
         <div class="row border-bottom mx-0 my-1">
                 <div class="col-2">Medals</div>
             <div class="col-10" data-bind="foreach: Medals">
