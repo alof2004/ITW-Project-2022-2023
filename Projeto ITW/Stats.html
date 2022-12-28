@@ -12,45 +12,237 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
-</head>
+    <style>
+        body {
+            background-color: #1F2022;
+        }
+        #wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
 
+        .content {
+            max-width: 1300px;
+            width: 100%;
+            min-width: 260px;
+            margin-top: 50px;
+            transition: 0.3s ease;
+        }
+
+.tabs {
+  margin: 0;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  border-radius: 2px 2px 0px 0px;
+}
+
+.tablinks {
+  background: transparent;
+  background-image: linear-gradient(90deg, transparent 70%, rgba(255, 255, 255, 0.2) 100%);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 25%;
+  /*change depending on the number of tabs*/
+  height: 80px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-family: "IBM Plex Sans", sans-serif;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.tablinks:before {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  content: "";
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  z-index: 2;
+}
+
+/*tab buttons hover*/
+.tablinks:hover::before {
+  height: 100%;
+  z-index: 2;
+  bottom: 0;
+}
+
+.tablinks.active {
+  background-color: white;
+  z-index: 0;
+  border-right: 0px;
+  border-left: 0px;
+  height: 110px;
+  bottom: 0px;
+  overflow: hidden;
+}
+
+.tablinks.active:before {
+  content: "";
+  width: 100%;
+  height: 5px;
+  top: 0;
+  left: 0;
+}
+
+/* Tabs text */
+.tablinks.active p,
+.tablinks.active:hover p {
+  opacity: 1;
+  background: -webkit-linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tablinks p {
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: 0.5s ease;
+  padding: 0;
+  margin: 0;
+  color: #686868;
+  backface-visibility: hidden;
+  font-weight: 400;
+}
+
+.tablinks:hover p {
+  color: white;
+  opacity: 1;
+}
+
+.wrapper_tabcontent {
+  background-color: white;
+  margin-top: 0px;
+  z-index: -3;
+  position: relative;
+  opacity: 1;
+  padding: 40px 60px;
+  overflow: hidden;
+  transition: all 1s ease;
+  top: 0;
+}
+
+.tabcontent {
+  display: none;
+  min-height: 180px;
+}
+
+.tabcontent.active {
+  transition: all 1s ease;
+  display: block;
+}
+
+/* Tab content line */
+.wrapper_tabcontent:after {
+  content: "";
+  height: 5px;
+  width: 100%;
+  position: absolute;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  left: 0;
+  bottom: 0;
+  z-index: -2;
+  transition: all 1s ease;
+}
+
+
+    </style>
+</head>
 <body>
     <!-- Work Area-->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
-        </li>
-      </ul>
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12" >
-                        <div class="card mt-3">
-                            <div class="card-header">
-                                Number of Competitions per Olympic Games edition                  
-                            </div>
-                            <div class="card-body">
-                                <canvas style="height:550px; width:1500px" id="myChart"></canvas>
-                            </div>                    
-                        </div>
-                    </div>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                    <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
+                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                    <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
+                    <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
+                </ul>
             </div>
-
         </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-      </div>
+    </nav>
+
+    <section id="wrapper">
+        <div class="content">
+           <!-- Tab links -->
+           <div class="tabs">
+              <button class="tablinks active" data-country="London"><p>Graph1</p></button>
+              <button class="tablinks" data-country="Paris"><p>Graph2</p></button>
+              <button class="tablinks" data-country="Barcelona"><p>Graph3</p></button>
+              <button class="tablinks" data-country="Madrid"><p>Graph4</p></button>
+           </div>
+     
+           <!-- Tab content -->
+           <div class="wrapper_tabcontent">
+              <div id="London" class="tabcontent active">
+                 <p>London Text</p>
+              </div>
+     
+              <div id="Paris" class="tabcontent">
+                 <p>Paris Text </p>
+              </div>
+     
+              <div id="Barcelona" class="tabcontent">
+                 <p>Barcelona Text </p>
+              </div>
+     
+              <div id="Madrid" class="tabcontent">
+                 <p>Madrid text 
+                 </p>
+              </div>
+           </div>
+        </div>
+     </section>
+
+
+
+
+
 
     <!-- End of Work Area -->
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2022/23</div>
+                <div class="icon-bar">
+                  <a target="_blank" href="https://www.facebook.com/olympics/" class="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+                  <a target="_blank" href="https://twitter.com/Olympics?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+                  <a target="_blank" href="https://www.google.com/search?q=olympics+games&rlz=1C1ONGR_pt-PTPT1023PT1023&oq=olympics+games&aqs=chrome..69i57j0i512l4j69i60l3.2882j0j7&sourceid=chrome&ie=UTF-8" class="google"><i class="fa fa-google fa-lg"></i></a>
+                  <a target="_blank" href="https://ch.linkedin.com/company/international-olympic-committee" class="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+                  <a target="_blank" href="https://www.youtube.com/channel/UCTl3QQTvqHFjurroKxexy2Q" class="youtube"><i class="fa fa-youtube fa-lg"></i></a>
+                  <a target="_blank" href="https://www.instagram.com/olympics/?hl=en" class="instagram"><i class="fa fa-instagram fa-lg"></i></a>
+                </div>
+            <div class="navbar-nav">
+                
+                <div class="nav-item text-end"><a target="_blank" href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
@@ -59,52 +251,31 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script>
-                $.ajax({
-        type: 'GET',
-        url: 'http://192.168.160.58/Olympics/api/statistics/Games_Athletes',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        success: function (data, status, xhr) {
+        // tabs
+        var tabLinks = document.querySelectorAll(".tablinks");
+        var tabContent = document.querySelectorAll(".tabcontent");
 
-            var athData = data;
-
-            athData.forEach(element => {
-            Counter1.push(element.Counter);
-            Name1.push(element.Name);
-            });
-
-            createBarGraph(Counter1, Name1);
-
-            }
+        tabLinks.forEach(function(el) {
+        el.addEventListener("click", openTabs);
         });
 
-        function createBarGraph(Counter, Name) {
-        let barChart = new Chart("myChart", {
-            type: "bar",
-            data: {
-                labels: Name1,
-                datasets: [{
-                data: Counter1,
-                label: 'Number of Athletes per Olympic Games edition',
-                backgroundColor: ['rgba(75, 192, 192, 0.2)','rgba(54, 162, 235, 0.2)',],
-                borderColor: ['rgb(75, 192, 192)','rgb(54, 162, 235)',],
-                borderWidth: 1
-            }]
-            },
-            options:{
-                animations: {
-                tension: {
-                    duration: 1000,
-                    easing: 'linear',
-                    from: 1,
-                    to: 0,
-                    loop: true
-                }
-                },
-        }
+        function openTabs(el) {
+        var btnTarget = el.currentTarget;
+        var country = btnTarget.dataset.country;
+
+        tabContent.forEach(function(el) {
+            el.classList.remove("active");
         });
+
+        tabLinks.forEach(function(el) {
+            el.classList.remove("active");
+        });
+
+        document.querySelector("#" + country).classList.add("active");
+        
+        btnTarget.classList.add("active");
         }
+
     </script>
 </body>
 
