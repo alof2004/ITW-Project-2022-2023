@@ -15,7 +15,6 @@
     body{
         margin-bottom:50px;
         background-color: #1F2022;
-        color:white
     }
     .slide{
         font-family: 'Roboto', sans-serif;
@@ -31,6 +30,38 @@
     .col-2{
         font-weight:bold
     }
+
+    .third {
+        width: auto;
+        box-sizing: border-box;
+        background-color: transparent;
+        border-radius: 0.6em;
+        cursor: pointer;
+        display: flex;
+        align-self: center;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+        margin: 20px;
+        padding: 1.2em 2.8em;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        border-color: #3498db;
+        color: #fff;
+        box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+        transition: all 150ms ease-in-out;
+    }
+    .third:hover {
+        box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+    }
+    .third:hover, .third:focus {
+        color: #fff;
+        outline: 0;
+    }
+       
 
 </style>
 </head>
@@ -59,59 +90,129 @@
     </nav>
     <!-- Work Area-->
     <div class="container">
-        <div class="py-2 border-bottom mb-3">
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
-        </div>
-        <!-- ko if:Name().length > 0 -->
-        <div class="row border-bottom mx-0 my-1">
-            <div class="col-2">Country Id</div><div class="col-10" data-bind="text:Id"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1">
-            <div class="col-2">Name</div><div class="col-10" data-bind="text:Name"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1">
-            <div class="col-2">IOC</div><div class="col-10" data-bind="text:IOC"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1" data-bind="visible: Flag() != '' && Flag() != null">
-            <div class="col-2">Flag</div><div class="small col-10">
-                <img style="height:200px" class="img" data-bind="attr:{src: Flag}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Flag }, text : Flag" target="_blank"></a>]
+        <div class="py-2 border-bottom mb-3 row">
+            <div class="col" >
+                <h2 style="color: white;" data-bind="text:Name()"></h2>
+            </div>
+            <div class="col pt-2" align="right">
+                <a href="./countries.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
             </div>
         </div>
-        <div class="row border-bottom mx-0  my-1">
-            <div class="col-2">Localização:</div>
-        <div class="col-10">
-        <iframe style="width:85%; height: 400px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&q=' + Name()}"></iframe></div>
-        </div>
-        <div class="row border-bottom mx-0 my-1">
-                <div class="col-2">Participants</div>
-            <div class="col-10" data-bind="foreach: Participant">
-                <a class="btn margin-left slide" style="box-shadow:2px 2px white; height:40px; width:150px;" data-bind="attr: { href: './gameDetails.html?id='+Id }">
-                <div data-bind="text: Name"></div>
+        <!-- ko if:Name().length > 0 -->
+
+
+        <div class="row">
+            <div style="color: white;" class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                <div class="row border-bottom mx-0 my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Country Id</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text:Id"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Country Name</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text:Name"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">IOC</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text:IOC"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div data-bs-toggle="modal" data-bs-target="#GamesModal">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Games</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div data-bs-toggle="modal" data-bs-target="#CompetitionsModal">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Competitions</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <div data-bs-toggle="modal" data-bs-target="#OrganizerModal" data-bind="visible: Organizer() != '' && Organizer() != null">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Organized olympics</button>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-8" align="right">  
+                <a data-bind="attr: { href: Flag }" target="_blank">
+                    <img style="max-width: 400px;" class="img" data-bind="attr:{src: Flag}">
                 </a>
             </div>
         </div>
-        <div class="row border-bottom mx-0 my-1">
-                <div class="col-2">Events</div>
-            <div class="col-10" data-bind="foreach: Events">
-                <btn class="col-2 btn margin-left slide" style="box-shadow:2px 2px white; font-weight:normal !important" data-bind="attr: { href: './gameDetails.html?id='+Id }">
-                <div data-bind="text: Name"></div>
-                </btn>
-            </div>
-        </div>
-        <div class="row border-bottom mx-0 my-1" data-bind="visible: Organizer() != '' && Organizer() != null">
-                <div class="col-2">Organizer</div>
-            <div class="col-10" data-bind="foreach: Organizer">
-                <btn class="btn margin-left slide" style="box-shadow:2px 2px white" data-bind="attr: { href: './gameDetails.html?id='+Id }">
-                <div data-bind="text: Name"></div>
-                </btn>
-            </div>
+        <hr style="border: 2px solid white;" />
+        <div class="row">
+            <div style="color: white;" class="col-2">Localização:</div>
+            <div class="col-10">
+            <iframe style="width:85%; height: 400px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&q=' + Name()}"></iframe></div>
         </div>
 
-        <!-- /ko -->
-        <a href="./countries.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-        <a data-bind="attr: { href:'./gameFull.html?id=' + Id() }" class="btn btn-default btn-sm small"><i class="fa fa-th"></i> Full Setails</a>
+
+    <!--SEE Games MODAL-->
+    <div class="modal fade" id="GamesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Games in which this country participated</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12" data-bind="foreach: Participant">
+                    <a class="btn margin-left slide" style="box-shadow:2px 2px black; height:40px; width:150px;" data-bind="attr: { href: './gameDetails.html?id='+Id }">
+                    <div data-bind="text: Name"></div>
+                    </a>
+                </div>
+            </div>
         </div>
+        </div>
+    </div>
+    <!--END MODAL-->
+
+    <!--SEE Competitions MODAL-->
+    <div class="modal fade" id="CompetitionsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Competitions in which this country participated</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12" data-bind="foreach: Events">
+                    <btn class="col-3 btn margin-left slide" style="box-shadow:2px 2px black; font-weight:normal !important" data-bind="attr: { href: './gameDetails.html?id='+Id }">
+                    <div data-bind="text: Name"></div>
+                    </btn>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--END MODAL-->    
+
+    <!--SEE Organizer MODAL-->
+    <div class="modal fade" id="OrganizerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Olympic Games that this country organized</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-10" data-bind="foreach: Organizer">
+                    <btn class="btn margin-left slide" style="box-shadow:2px 2px white" data-bind="attr: { href: './gameDetails.html?id='+Id }">
+                    <div data-bind="text: Name"></div>
+                    </btn>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--END MODAL-->  
+
+
+        <!-- /ko -->
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
