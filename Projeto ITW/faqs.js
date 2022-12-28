@@ -11,14 +11,14 @@ $(document).ready(function () {
         $('#formsfaqs').submit(function (event) {
             var retval = true
 
-            if ($("#pessoa").val().trim().length < 10 || $("#pessoa").val().trim().length > 100) {
+            if ($("#pessoa").val().trim().length < 5 || $("#pessoa").val().trim().length > 50) {
                 $("#pessoaError").removeClass('d-none');
                 retval = false;
             }
             else {
                 $("#pessoaError").addClass('d-none');
             }
-            if ($("#pessoa2").val().trim().length < 10 || $("#pessoa2").val().trim().length > 100) {
+            if ($("#pessoa2").val().trim().length < 5 || $("#pessoa2").val().trim().length > 50) {
                 $("#pessoa2Error").removeClass('d-none');
                 retval = false;
             }

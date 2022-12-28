@@ -39,6 +39,11 @@
     transition:0.5s
 }
 
+#estatisticas:hover {
+    text-shadow: 0 0 3px #ECA4EA, 0 0 7px #ECA4EA, 0 0 20px #ECA4EA;color:#ECA4EA;
+    transition:0.5s
+}
+
 .margin-left {
     margin-left: 20px !important;
     margin-bottom: 5px;
