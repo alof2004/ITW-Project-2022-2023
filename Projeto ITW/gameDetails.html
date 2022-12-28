@@ -92,12 +92,27 @@
         </div>
         <div class="row border-bottom mx-0 my-1">
                 <div class="col-2">Medals</div>
-            <div class="col-10" data-bind="foreach: Medals">
-                <div data-bind="text: MedalName"></div> <div data-bind="text:Counter"></div>
+            <div class="col-10" data-bind="foreach:Medals">
+                <span id="med"></span><div data-bind="text:Counter"></div>
             </div>
         </div>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="card mt-3">
+                    <div class="card-header">
+                        Number of Medals by Country over all Olympic Games editions                    
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChart"></canvas>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
       <a  data-bind="attr: { href:'./gamesStats.html?id=' + Id() }">
       <button class="card__header-button">Medalhas por País</button></a>
+
         <!-- /ko -->
         <a href="./games.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
         <a data-bind="attr: { href:'./gameFull.html?id=' + Id() }" class="btn btn-default btn-sm small"><i class="fa fa-th"></i> Full Setails</a>
@@ -139,5 +154,55 @@
     <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="gameDetails.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var Counter1 = [];
+        var Medalhas = [];
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://192.168.160.58/Olympics/api/Games/FullDetails?id=2',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            success: function (data, status, xhr) {
+
+                var athData = data;
+
+                athData.forEach(element => {
+                    Counter.push(element.Medals.reduce((accum, ele) => ele.Counter + accum, 0));
+                    Medalhas.push.Medals.map(({ MedalName }) => MedalName);
+                    Counter1.push.Medals.map(({ Counter }) => Counter);
+                });
+
+                drawChart(Counter1, Medalhas);
+            }
+        });
+
+        function drawChart() {
+            let barChart = new Chart("myChart", {
+                type: "pizza",
+                data: {
+                    labels: Medalhas,
+                    datasets: [{
+                        data: Counter1,
+                        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)',],
+                        borderColor: ['rgb(75, 192, 192)', 'rgb(54, 162, 235)',],
+                    }]
+                },
+                options: {
+                    animations: {
+                        tension: {
+                            duration: 1000,
+                            easing: 'linear',
+                            from: 1,
+                            to: 0,
+                            loop: true
+                        }
+                    },
+                }
+            });
+        }
+    </script>
 </body>
 </html>
