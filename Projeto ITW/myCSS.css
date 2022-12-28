@@ -93,7 +93,39 @@ li.page-item a {
 .facebook, .twitter, .youtube, .linkedin, .google, .instagram {
     color: dimgrey;
     filter: drop-shadow(1px 2px 1px black);
-    margin: 5px;
- 
-    
+    margin: 5px;   
+}
+
+
+
+
+.third {
+    width: auto;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 0.6em;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    transition: all 150ms ease-in-out;
+}
+.third:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+}
+.third:hover, .third:focus {
+    color: #fff;
+    outline: 0;
 }
