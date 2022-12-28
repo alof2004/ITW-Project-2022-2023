@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="..\lib\jquery-ui\dist\themes\base\jquery-ui.css">
     <link rel="stylesheet" href="myCSS.css" />
+    <style>
+            body{
+        margin-bottom:50px;
+        background-color: #1F2022;
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -36,56 +43,80 @@
     </nav>
     <!-- Work Area-->
     <div class="container">
-        <div class="py-2 border-bottom mb-3">
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
-        </div>
-        <!-- ko if:Name().length > 0 -->
-        <div class="row border-bottom mx-0 my-1">
-            <div class="col-2">Id</div><div class="col-10" data-bind="text:Id"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1">
-            <div class="col-2">Name</div><div class="col-10" data-bind="text:Name"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1">
-            <div class="col-2">ModalityId</div><div class="col-10" data-bind="text:ModalityId"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1">
-            <div class="col-2">Modality</div><div class="col-10" data-bind="text:Modality"></div>
-        </div>
-        <div class="row border-bottom mx-0  my-1" data-bind="visible: Photo() != '' && Photo() != null">
-            <div class="col-2">Photo</div><div class="small col-10">
-                <img class="img" data-bind="attr:{src: Photo}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text : Photo" target="_blank"></a>]
+        <div class="py-2 border-bottom mb-3 row">
+            <div class="col" >
+                <h2 style="color: white;" data-bind="text:Name()"></h2>
+            </div>
+            <div class="col pt-2" align="right">
+                <a href="./competitions.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
             </div>
         </div>
-        <div class="row border-bottom mx-0 my-1">
-            <div class="col-2">Participant</div>
-            <table class="table table-striped">
-                <thead class=" bg-dark text-light">
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">City Name</th>
-                        <th scope="col">Country Name</th>
-                    </tr>
-                </thead>
-                <tbody data-bind="foreach:Participant">
-                    <tr>
-                        <td class="align-middle" data-bind="text:Id"></td>
-                        <td class="align-middle" data-bind="text:Name"></td>
-                        <td class="align-middle" data-bind="text:Year"></td>
-                        <td class="align-middle" data-bind="text:CityName"></td>
-                        <td class="align-middle" data-bind="text:CountryName"></td>
-                        <td class="text-end"></td>
+        <!-- ko if:Name().length > 0 -->
 
-                    </tr>
-                </tbody>
-            </table>
+        <div class="row">
+            <div style="color: white;" class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                <div class="row border-bottom mx-0 my-1">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">Competition Id</div><div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8" data-bind="text:Id"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">Competition Name</div><div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8" data-bind="text:Name"></div>
+                </div>
+                <div class="row border-bottom mx-0 my-1">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">Modality Id</div><div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8" data-bind="text:ModalityId"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">Modality Name</div><div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8"  data-bind="text:Modality"></div>
+                </div>
+                <div data-bs-toggle="modal" data-bs-target="#GamesModal">
+                    <div class="row mx-0  my-1 justify-content-center">
+                        <button class="btn third">Games</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-8" align="right" data-bind="visible: Photo() != '' && Photo() != null">  
+                <a data-bind="attr: { href: Photo }" target="_blank">
+                    <img style="max-width:400px" class="img" data-bind="attr:{src: Photo}">
+                </a>
+            </div>
         </div>
         <!-- /ko -->
-        <a href="./competitions.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+    </div>
+
+    <!--SEE Games MODAL-->
+    <div class="modal fade" id="GamesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Games where this competition took place</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead class=" bg-dark text-light">
+                        <tr>
+                            <th scope="col-2">Id</th>
+                            <th scope="col-3">Name</th>
+                            <th scope="col-2">Year</th>
+                            <th scope="col-2">Country Name</th>
+                            <th scope="col-3">City Name</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach:Participant">
+                        <tr>
+                            <td scope="col-2" class="align-middle" data-bind="text:Id"></td>
+                            <td scope="col-3" class="align-middle" data-bind="text:Name"></td>
+                            <td scope="col-2" class="align-middle" data-bind="text:Year"></td>
+                            <td scope="col-2" class="align-middle" data-bind="text:CountryName"></td>
+                            <td scope="col-3" class="align-middle" data-bind="text:CityName"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        </div>
+    </div>
+    <!--END MODAL-->
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
