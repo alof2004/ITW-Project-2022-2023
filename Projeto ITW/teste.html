@@ -47,15 +47,15 @@
                 var athData = data;
 
                 athData.forEach(element => {
-                    Medalhas.push(element.Medals.map(({ MedalName }) => MedalName));
-                    Counter1.push(element.Medals.map(({ Counter }) => Counter));
+                    Counter1.push(element.Medals.reduce((accum, ele) => ele.Counter + accum, 0));
+                    Medalhas.push(element.Medalhas);
                 });
 
                 drawChart(Counter1, Medalhas);
             }
         });
 
-        function drawChart() {
+        function drawChart(Counter1, Medalhas) {
             let barChart = new Chart("myChart", {
                 type: "pizza",
                 data: {
