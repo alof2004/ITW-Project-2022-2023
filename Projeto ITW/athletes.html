@@ -1,0 +1,388 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2022/23 - Olympic Games editions List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Questrial">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="..\lib\jquery-ui\dist\themes\base\jquery-ui.css">
+    <link rel="stylesheet" href="myCSS.css" />
+    <script src="athletes.js"></script>
+    <style>
+
+        body {
+            background-color: #1F2022;
+        }
+
+        .row {
+            padding-inline-start: 20px;
+            padding-inline-end: 20px;
+            display: flex;
+            justify-content: space-between;
+            perspective: 800px;
+            padding: 16px;
+        }
+
+        .row .card {
+            position: relative;
+            width: 250px;
+            height: 350px;
+            cursor: pointer;
+            transition: 1s ease-in-out;
+            transform-style: preserve-3d;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border:10px;
+            border-color:black;
+            box-shadow: #FFFF 0px 1px 1px 0px inset, #FFFF 0px 30px 60px -30px; !important
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+
+        .row .title {
+            position: absolute;
+            bottom: 1%;
+            text-align: center;
+            width: 100%;
+            font-size: 20px;
+            color: white;
+            background: transparent;
+            font-weight: 700;
+            text-shadow: 2px 2px 1px black, -2px -2px 1px black;
+            font-family: "Questrial", sans-serif;
+        }
+
+        .row .card:hover {
+            transform: rotateY(0.5turn);
+
+        }
+
+        .row .card .card__face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transition: 1s ease-in-out;
+            border-radius: 15px;
+            background-color: #E1E3E8;
+        }
+
+        .row .card .card__face img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 15px;
+
+        }
+
+        .row .card .card__face--back {
+            padding: 8px 8px 8px 8px;
+            transform: rotateY(0.5turn);
+        }
+
+        #NAC {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+            font-family: 'serif';
+            padding-top: 5px;
+            width: 245px;
+        }
+
+        #CA {
+            height: 140px;
+            padding-top: 10px;
+        }
+
+        
+
+        .btn {
+            background: transparent;
+            border: none;
+            margin: 5px;
+            font-size: 25px;
+            outline: none;
+            
+        }
+            .btn i:hover {
+                cursor: pointer;
+            }
+        #maisDetalhes {
+            font-family: "Mukta";
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            outline: none;
+            border: 0;
+            vertical-align: middle;
+            text-decoration: none;
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+            font-family: inherit;
+            top:8px
+        }
+
+            button.learn-more {
+                width: 9rem;
+                height: auto;
+            }
+
+                button.learn-more .circle {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    position: relative;
+                    display: block;
+                    margin: 0;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    background: #282936;
+                    border-radius: 1.625rem
+                }
+
+                    button.learn-more .circle .icon {
+                        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        background: #fff;
+                    }
+
+                        button.learn-more .circle .icon.arrow {
+                            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1
+                            );
+                            left: 0.7rem;
+                            width: 0.625rem;
+                            height: 0.1rem;
+                            background: none;
+                        }
+
+                            button.learn-more .circle .icon.arrow::before {
+                                position: absolute;
+                                content: "";
+                                top: -0.25rem;
+                                right: -0.03rem;
+                                width: 0.625rem;
+                                height: 0.625rem;
+                                border-top: 0.125rem solid #fff;
+                                border-right: 0.125rem solid #fff;
+                                transform: rotate(45deg);
+                            }
+
+                button.learn-more .button-text {
+                    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    padding: 0.75rem 0;
+                    margin: 0 0 0 2.3rem;
+                    color: #282936;
+                    font-weight: 700;
+                    line-height: 1;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+
+            button:hover .circle {
+                width: 100%;
+            }
+
+                button:hover .circle .icon.arrow {
+                    background: #fff;
+                    transform: translate(1rem, 0);
+                }
+
+            button:hover .button-text {
+                color: #fff;
+            }
+
+
+        .pagination > li > a{
+        color:black;
+        border-color: #28242c;
+        }
+        .pagination a:hover,
+        .pagination .active a {
+            background-color: #28242c;
+            border-color:#28242c;
+            color: #ffffff;
+        }
+
+        .pagination a:focus {
+            background-color: #28242c;
+            color: black;
+        }
+      #heart{
+            text-shadow: 2px 2px 0px black, 1px 1px 0px black
+        }
+      #heart:hover{
+            transition:0.5s;
+            transform:scale(1.20)
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                    <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
+                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                    <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Working Area -->
+    <div class="container">
+        <div class="border-bottom py-2 mb-2">
+            <h2 style="color: white;" data-bind="text:displayName"></h2>
+        </div>
+        <!-- ko if:records().length > 0 -->
+        <div class="row small">
+            <p class=" col-4 mr-auto pt-2">
+                <span style="color: white;" data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+                <span style="color: white;" data-bind="html: 'Athletes: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+            </p>
+            <div class="col-md-8 col-sm-12 my-0 pt-2 d-grid justify-content-md-end justify-content-center">
+                <ul class="pagination float-end">
+                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                    <li class="page-item float-end"><a class="page-link" title="First Page"
+                            data-bind="attr: { href: './athletes.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                    <li class="page-item float-end"><a class="page-link" title="Previous Page"
+                            data-bind="attr: { href: './athletes.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                    <!-- /ko -->
+                    <!-- ko foreach: pageArray()-->
+                    <!-- ko if:$data == $parent.currentPage() -->
+                    <li class="active page-item"><a class="page-link"
+                            data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
+                    <!-- /ko -->
+                    <!-- ko if:$data != $parent.currentPage() -->
+                    <li class="page-item"><a class="page-link"
+                            data-bind="attr: { href: './athletes.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a>
+                    </li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                    <li class="page-item"><a class="page-link" title="Next Page"
+                            data-bind="attr: { href: './athletes.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                    <li class="page-item"><a class="page-link" title="Last Page"
+                            data-bind="attr: { href: './athletes.html?page=' + totalPages() }">⇥</a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
+        <!-- /ko -->
+
+        <form class="form-inline py-2 my-lg-0 " id="searchform">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search and Select a Athlete (You can search by their ID)"
+                spellcheck="false" id="tagsAthletes" aria-label="Search" />         
+        </form>
+        <div id="error-message" class="ps-2 mb-2"></div>
+
+        <div  class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records">
+            <div>
+                <div class="card">
+                    <div class="card__face card__face--front">
+                        <img class="d-block w-100"
+                            data-bind="safeSrc:{src: Photo,  fallback: 'https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg'}" />
+                        <p class="title" data-bind="text:Name"></p>
+                    </div>
+                    <div class="card__face card__face--back">
+                        <div class="container" id="NAC">
+                            <p data-bind="style: { 'font-size' : Name.length > 25 ? '22px' : '30px' }, text: Name"></p>
+                        </div>
+                        <div class="container text-center" id="CA">
+                            <p><span>Genre: </span><span data-bind="html: $root.formatNameSex(Sex)"></span><span data-bind="text: Sex == 'M' ? 'Male' : 'Female'"></span></p>
+                            <p><span>Best Medal: </span><span id="med" data-bind="html: $root.formatPosition(BestPosition)"></span>
+                        </div>
+                        <div id="butoes" class="container">
+                            <!--nnnnn-->
+                            <div class="col-12">
+                                <button id="maisDetalhes" style=float:left;  class="learn-more">
+                                    <a data-bind="attr: { href:'./athletesDetails.html?id=' + Id }"> 
+                                            <span style=float:left data-bind="attr: { href:'./athletesDetails.html?id=' + Id }" class="circle" aria-hidden="true">
+                                                <span class="icon arrow"></span>
+                                            </span>
+                                            <span class="button-text">Detalhes</span>
+                                    </a>
+                                </button>
+                                    <button data-bind="click: () => $parent.toggleFavourite(Id), attr : { 'id': 'favourite_' + Id }"id="heartbt" class="btn btn-favourite">
+                                        <i data-bind="attr: {'class': $parent.favourites().includes(Id)? 'fa fa-heart text-danger' : 'fa fa-heart-o'}" class="fa fa-heart-o" id="heart" title="Selecione para adicionar aos favoritos"></i>
+                                    </button>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/loadingSmall.gif" height="30" /> Loading data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <img style="height:100px" src="../images/loadingRun.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Working Area -->
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2022/23</div>
+                <div class="icon-bar">
+                  <a target="_blank" href="https://www.facebook.com/olympics/" class="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+                  <a target="_blank" href="https://twitter.com/Olympics?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+                  <a target="_blank" href="https://www.google.com/search?q=olympics+games&rlz=1C1ONGR_pt-PTPT1023PT1023&oq=olympics+games&aqs=chrome..69i57j0i512l4j69i60l3.2882j0j7&sourceid=chrome&ie=UTF-8" class="google"><i class="fa fa-google fa-lg"></i></a>
+                  <a target="_blank" href="https://ch.linkedin.com/company/international-olympic-committee" class="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+                  <a target="_blank" href="https://www.youtube.com/channel/UCTl3QQTvqHFjurroKxexy2Q" class="youtube"><i class="fa fa-youtube fa-lg"></i></a>
+                  <a target="_blank" href="https://www.instagram.com/olympics/?hl=en" class="instagram"><i class="fa fa-instagram fa-lg"></i></a>
+                </div>
+            <div class="navbar-nav">
+                
+                <div class="nav-item text-end"><a target="_blank" href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/jquery-ui/dist/jquery-ui.min.js"></script>
+    <script src="athletes.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2022/23 - Countries edition Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+</head>
+
+<body>
+    <!-- Work Area-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="card mt-3">
+                    <div class="card-header">
+                        Number of Countries per Olympic Games edition                   
+                    </div>
+                    <div class="card-body">
+                        <canvas style="height:550px; width:1500px" id="myChart"></canvas>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Work Area -->
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
+    <script>
+        var Counter1 = [];
+        var Name1 = [];
+
+        $.ajax({
+        type: 'GET',
+        url: 'http://192.168.160.58/Olympics/api/statistics/Games_Countries',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        success: function (data, status, xhr) {
+
+            var athData = data;
+
+            athData.forEach(element => {
+            Counter1.push(element.Counter);
+            Name1.push(element.Name);
+            });
+
+            createBarGraph(Counter1, Name1);
+
+            }
+        });
+
+        function createBarGraph(Counter, Name) {
+        let barChart = new Chart("myChart", {
+            type: "bar",
+            data: {
+                labels: Name1,
+                datasets: [{
+                data: Counter1,
+                label: 'Number of Countries per Olympic Games edition',
+                backgroundColor: ['rgba(75, 192, 192, 0.2)','rgba(54, 162, 235, 0.2)',],
+                borderColor: ['rgb(75, 192, 192)','rgb(54, 162, 235)',],
+                borderWidth: 1
+            }]
+            },
+            options:{
+                animations: {
+                tension: {
+                    duration: 1000,
+                    easing: 'linear',
+                    from: 1,
+                    to: 0,
+                    loop: true
+                }
+                },
+        }
+        });
+        }
+    </script>
+</body>
+
+</html>

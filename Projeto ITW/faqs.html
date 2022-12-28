@@ -1,0 +1,314 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW - Olympics test App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <style>
+body{
+  background-color: #1F2022;
+        }
+p.title{
+  text-align: center;
+  font-size: 45px;
+  color: #efdeff;
+}
+#acordeao{
+  width: 100%;
+  max-width: 800px;
+  min-width: 300px;
+  margin: 0 auto;
+  padding: 0 5vh;
+}
+
+b{
+  color: #FFFFFF;
+  font-size: 55px;
+}
+
+p.remarks, a{
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+/* accordion-1 */
+#accordion-1{
+  position: relative;
+  box-shadow: 2px 2px 7px #DBDBDB;
+}
+
+#accordion-1 .head{
+  background-color: #FFFFFF;
+  color: black;
+  padding: 20px 30px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#accordion-1 .arrow{
+  content:'';
+  position: absolute;
+  right: 0;
+  right: 30px;
+  top: 45px;
+  opacity: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 40px solid #FFFFFF;
+  transition: 0.3s ease;
+  z-index: 2;
+}
+
+#accordion-1 .head:hover .arrow, #accordion-1 .arrow-animate{
+  border-top: 40px solid #9B0000;
+  transform: translateY(30px);
+  opacity: 1
+
+}
+
+#accordion-1 .content{
+  background-color: #141414;
+  display: none;
+  padding: 30px;
+  color: white;
+  text-align:center
+}
+
+#accordion-1 .head:hover, #accordion-1 .active{
+  background-color: #9B0000; 
+}
+
+/* accordion-2 */
+#accordion-2{
+  position: relative;
+  box-shadow: 2px 2px 7px #DBDBDB;
+  margin-top:5px
+}
+
+#accordion-2 .head{
+  background-color: #FFFFFF;
+  color: black;
+  padding: 20px 30px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+
+#accordion-2 .arrow{
+  content:'';
+  position: absolute;
+  right: 0;
+  right: 30px;
+  top: 45px;
+  opacity: 1;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 40px solid #FFFFFF;
+  transition: 0.3s ease;
+  z-index: 2;
+  opacity:0%
+}
+
+#accordion-2 .head:hover .arrow, #accordion-2 .arrow-animate {
+            border-top: 40px solid #9B0000;
+            transform: translateY(30px);
+            opacity: 100%
+        }
+
+#accordion-2 .content{
+  background-color: #141414;
+  display: none;
+  padding: 30px;
+  color: white;
+}
+
+#accordion-2 .head:hover, #accordion-2 .active{
+  background-color: #9B0000; 
+}
+#afonso:hover, #rita:hover, #jsp:hover {
+            transition: 0.5s;
+            text-shadow: 1px 1px 15px #fff, 1px 1px 15px #ccc;
+}
+#accordion-3{
+  position: relative;
+  box-shadow: 2px 2px 7px #DBDBDB;
+  margin-top:5px
+}
+
+#accordion-3 .head{
+  background-color: #FFFFFF;
+  color: black;
+  padding: 20px 30px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+
+#accordion-3 .arrow{
+  content:'';
+  position: absolute;
+  right: 0;
+  right: 30px;
+  top: 45px;
+  opacity: 1;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 40px solid #FFFFFF;
+  transition: 0.3s ease;
+  z-index: 2;
+  opacity:0%
+}
+
+#accordion-3 .head:hover .arrow, #accordion-3 .arrow-animate {
+            border-top: 40px solid #9B0000;
+            transform: translateY(30px);
+            opacity: 100%
+        }
+
+#accordion-3 .content{
+  background-color: #141414;
+  display: none;
+  padding: 30px;
+  color: white;
+}
+
+#accordion-3 .head:hover, #accordion-3 .active{
+  background-color: #9B0000; 
+}
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
+                <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
+                <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" id="acordeao" style="padding-top: 20px">
+  <div id="accordion-1">
+    <div class="head">
+      <h2>What can you find on this website?</h2>
+    <i id="seta" class="arrow"></i>
+    </div>
+    <div class="content">
+      <p> In this website you can find everything related to Olympics! We have a lot of topics related to the Olympics: athletes, countries, modalities, games, competitions and some estatistics. Every item on this website has their details so if you want to know more about your favorite athlete, it's easy! Just search for his/her name on the search bar and select it .</p>
+    </div>
+  </div>
+  <br>
+  <div id="accordion-2">
+    <div class="head">
+      <h2>Who are the creators of this website?</h2>
+      <i class="arrow"></i>
+    </div>
+    <div class="content">
+    <div class="row">
+    <div class="col-6" style="text-align:center">
+      <p>Afonso Ferreira</p>
+      <p id="afonso"><a style="color:white" href="mailto:afonso.ferreira@ua.pt" class="text-decoration-none text-muted">afonso.ferreira@ua.pt</a></p></div>
+    <div class="col-6" style="text-align:center">
+        <p>Rita Silva</p>
+      <p id="rita"><a style="color:white" href="mailto:aritafs@ua.pt" class="text-decoration-none text-muted">aritafs@ua.pt</a></p></div>
+    </div>
+    <div style="text-align:center">Manutenção da API realizada por:</div>
+     <p style="text-align:center" id="jsp"><a style="color:white" href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a></p>
+    </div>
+  </div>
+    <br />
+  <div id="accordion-3">
+    <div class="head">
+      <h2>Support Form</h2>
+      <i class="arrow"></i>
+    </div>
+    <div class="content">
+      <form id="formsfaqs" action="http://192.168.160.36/FormEcho.aspx" name="faqs" autocomplete="off">
+           <div class="row form-group" style="padding-bottom:10px">
+               <label for="Nome" class="col-md-2 col-form-label">First Name</label>
+               <div class="col-md-4">
+                   <input type="text" name="Nome" placeholder="Insert your first name..." id="pessoa" class="form-control btn-outline-danger"/>
+                   <div class="d-none text-danger col-form-label" id="pessoaError"><i class="fa fa-exclamation-triangle"></i>  (Min: 10 letters; Max: 100 letters).</div>
+               </div>
+               <label for="Apelido" class="col-md-2 col-form-label">Last Name</label>
+               <div class="col-md-4">
+                   <input type="text" name="Nome" id="pessoa2" placeholder="Insert your last name..." class="form-control btn-outline-danger"/>
+                   <div class="d-none text-danger col-form-label" id="pessoa2Error"><i class="fa fa-exclamation-triangle"></i>  (Min: 10 letters; Max: 100 letters).</div>
+               </div>
+
+           </div>
+           <div class="row form-group" style="padding-bottom:10px">
+               <label for="email" class="col-md-2 col-form-label">Email</label>
+               <div class="col-md-10">
+                   <input type="text" name="email" id="email" placeholder="Insert your e-mail" class="form-control btn-outline-danger" />
+                   <div class="d-none text-danger col-form-label" id="emailError"><i class="fa fa-exclamation-triangle"></i> (Min: 10 letters; Max: 100 letters).</div>
+               </div>
+           </div>
+           <div class="row form-group" style="padding-bottom:10px">
+             <label for="duvtipo" class="col-md-2 col-form-label" >Type of question</label>
+             <div class="col-md-10">
+               <div class="form-check">
+                 <input type="radio" name="duvtipo" class="form-check-input " value="bugs"><label class="form-check-label" >Report bugs</label><br />
+                 <input type="radio" name="duvtipo" class="form-check-input " value="sugestao"><label class="form-check-label" >Suggestion</label><br />
+                 <input type="radio" name="duvtipo" class="form-check-input" value="duvida" ><label class="form-check-label">Help</label><br />
+                 <input type="radio" name="duvtipo" class="form-check-input" value="outro"><label class="form-check-label" >Other</label>
+               </div>                            
+              <div class="d-none text-danger col-form-label" id="duvtipoError"><i class="fa fa-exclamation-triangle"></i>  (Choose a type of question).</div>
+            </div> 
+          </div>
+          <div class="row form-group" style="padding-bottom:10px">
+            <label for="duvida" class="col-md-2 col-form-label">Write</label>
+            <div class="col-md-10">
+                <textarea type="text" name="duvida" id="duvida" class="form-control btn-outline-danger" style="min-height:80px ;"> </textarea>
+                <div class="d-none text-danger col-form-label" id="duvidaError"><i class="fa fa-exclamation-triangle"></i>  (Min: 20 letters; Max: 200 letters).</div>
+            </div>                             
+          </div> 
+          <div class="text-center form-group"> <input type="Submit" name="submitBtn" value="Submit" class="btn btn-danger" />
+            <input type="reset" name="resetBtn" value="Clear" class="btn btn-secondary" id='clean'/> </div>
+      </form>
+    </div>
+  </div>
+ </div>
+  <nav class="navbar navbar-dark bg-dark fixed-bottom">
+    <div class="container small">
+        <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2022/23</div>
+            <div class="icon-bar">
+              <a target="_blank" href="https://www.facebook.com/olympics/" class="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+              <a target="_blank" href="https://twitter.com/Olympics?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+              <a target="_blank" href="https://www.google.com/search?q=olympics+games&rlz=1C1ONGR_pt-PTPT1023PT1023&oq=olympics+games&aqs=chrome..69i57j0i512l4j69i60l3.2882j0j7&sourceid=chrome&ie=UTF-8" class="google"><i class="fa fa-google fa-lg"></i></a>
+              <a target="_blank" href="https://ch.linkedin.com/company/international-olympic-committee" class="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+              <a target="_blank" href="https://www.youtube.com/channel/UCTl3QQTvqHFjurroKxexy2Q" class="youtube"><i class="fa fa-youtube fa-lg"></i></a>
+              <a target="_blank" href="https://www.instagram.com/olympics/?hl=en" class="instagram"><i class="fa fa-instagram fa-lg"></i></a>
+            </div>
+        <div class="navbar-nav">
+            
+            <div class="nav-item text-end"><a target="_blank" href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+        </div>
+    </div>
+  </nav>
+ <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+ <script src="../lib/jquery/dist/jquery.min.js"></script>
+ <script src="faqs.js"></script>
+</body>
+</html>

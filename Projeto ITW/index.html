@@ -1,0 +1,141 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW - Olympics test App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="..\lib\jquery-ui\dist\themes\base\jquery-ui.css">
+    <link rel="stylesheet" href="myCSS.css" />
+    <style>
+.fa-lg {
+  transition: ease 500ms;
+  cursor: pointer;
+}
+.fa-lg:hover {
+  transform: translateY(-5px);
+  color:white
+}
+h5{
+    font-family: 'Yeseva One', cursive;
+}
+#um{
+   font-size:60px;
+   color:darkred;
+   text-shadow: 3px 3px 1px darkblue;
+}
+#dois{
+    font-size: 60px;
+    color: yellow ;
+    text-shadow: 4px 4px 1px darkgreen;
+}
+#tres{
+   font-size:60px;
+   color:white;
+   text-shadow: 3px 3px 1px darkred;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                    <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
+                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                    <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
+                </ul>
+                <form>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search and Select Someone"
+                spellcheck="false" id="tags" aria-label="Search">
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Working Area -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner" >
+                    <div class="carousel-item active">
+                        <a href="gameDetails.html?id=51">
+                        <img src="../images/image4.jpg" class="d-block w-100 " alt="...">
+                        </a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 id="um">Olympic Games Sochi 2014</h5>
+                        <p></p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="gameDetails.html?id=52">
+                        <img src="../images/image5.jpg" class="d-block w-100 " alt="..."></a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 id="dois">Olympic Games Rio 2016</h5>
+                        <p></p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="gameDetails.html?id=50">
+                        <img src="../images/image6.jpg" class="d-block w-100 " alt="..."></a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 id="tres">Olympic Games London 2012</h5>
+                        <p></p>
+                    </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+ </div>
+<br />
+<br />
+</>
+    <!-- End of Working Area -->
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2022/23</div>
+                <div class="icon-bar">
+                  <a target="_blank" href="https://www.facebook.com/olympics/" class="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+                  <a target="_blank" href="https://twitter.com/Olympics?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+                  <a target="_blank" href="https://www.google.com/search?q=olympics+games&rlz=1C1ONGR_pt-PTPT1023PT1023&oq=olympics+games&aqs=chrome..69i57j0i512l4j69i60l3.2882j0j7&sourceid=chrome&ie=UTF-8" class="google"><i class="fa fa-google fa-lg"></i></a>
+                  <a target="_blank" href="https://ch.linkedin.com/company/international-olympic-committee" class="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+                  <a target="_blank" href="https://www.youtube.com/channel/UCTl3QQTvqHFjurroKxexy2Q" class="youtube"><i class="fa fa-youtube fa-lg"></i></a>
+                  <a target="_blank" href="https://www.instagram.com/olympics/?hl=en" class="instagram"><i class="fa fa-instagram fa-lg"></i></a>
+                </div>
+            <div class="navbar-nav">
+                
+                <div class="nav-item text-end"><a target="_blank" href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/jquery-ui/dist/jquery-ui.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
