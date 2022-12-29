@@ -12,6 +12,7 @@
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="..\lib\jquery-ui\dist\themes\base\jquery-ui.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="myCSS.css" />
     <style>
         body{
@@ -107,8 +108,8 @@
     width: 100%;
     text-align: center;
     font-size: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
     #butao {
     position: relative;
@@ -126,6 +127,7 @@
     transition: ease-out 0.5s;
     -webkit-transition: ease-out 0.5s;
     -moz-transition: ease-out 0.5s;
+    font-weight:800
 }
         #butaoInverno {
     position: relative;
@@ -143,6 +145,25 @@
     transition: ease-out 0.5s;
     -webkit-transition: ease-out 0.5s;
     -moz-transition: ease-out 0.5s;
+    font-weight:800
+}
+                #butaoTodos {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    padding: 12px 27px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: black;
+    background: white;
+    border: 3px solid black;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+    font-weight:800
 }
     .btn.btn-border-4::after,
 .btn.btn-border-4::before {
@@ -242,8 +263,10 @@
                 spellcheck="false" id="tagsGames" aria-label="Search" />         
         </form>
         <div id="butoes" style="padding-top:10px" class="container">
-          <a id="butao" class="btn btn-border-4" style="margin:0px; margin-right:10px; padding:5px" href="">Summer<img style="height:30px" src="../images/praia.png"/></a>
-          <a id="butaoInverno" class="btn btn-border-4" style="margin:0px;padding:5px" href="">Winter<img style="height:30px" src="../images/inverno.png"/></a>
+          <a id="butao" class="btn btn-border-4" style="margin:0px; width:150px; margin-right:15px; padding:5px" href="gamesSummer.html">SUMMER<img style="height:30px" src="../images/praia.png"/></a> 
+                   <a id="butaoTodos" class="btn btn-border-4" style="margin:0px; width:100px; margin-right:15px; padding:5px" href="">ALL<img style="height:30px"/></a>
+          <a id="butaoInverno" class="btn btn-border-4" style="width:150px;margin:0px;margin-right:15px;padding:5px" href="">WINTER  <img style="height:30px" src="../images/inverno.png"/></a>
+   
         </div>
         <div id="error-message" class="ps-2 mb-2"></div>
         <div id="container" data-bind="foreach:records" class="container row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
