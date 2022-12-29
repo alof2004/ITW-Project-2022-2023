@@ -32,7 +32,7 @@
         }
 
 
-        .btn {
+        #heart {
             background: transparent;
             border: none;
             margin: 5px;
@@ -163,6 +163,65 @@
             transition:0.5s;
             transform:scale(1.20)
     }
+    #butoes {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+    #butao {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    padding: 12px 27px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: black;
+    background: #FEDB39;
+    border: 3px solid #FED049;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    -webkit-transition: ease-out 0.5s;
+    -moz-transition: ease-out 0.5s;
+}
+    .btn.btn-border-4::after,
+.btn.btn-border-4::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    transition: .5s;
+}
+
+.btn.btn-border-4::after {
+    top: -11px;
+    left: -11px;
+    border-top: 3px solid transparent;
+    border-left: 3px solid transparent;
+}
+
+.btn.btn-border-4::before {
+    bottom: -11px;
+    right: -11px;
+    border-bottom: 3px solid transparent;
+    border-right: 3px solid transparent;
+}
+
+.btn.btn-border-4:hover {
+    color: white;
+}
+
+.btn.btn-border-4:hover::after,
+.btn.btn-border-4:hover::before {
+    width: calc(100% + 22px);
+    height: calc(100% + 22px);
+    border-color: white;
+    border-radius:5px
+}
     </style>
 </head>
 <body>
@@ -221,12 +280,14 @@
             </div>
         </div>
         <!-- /ko -->
-
         <form class="form-inline py-2 my-lg-0 " id="searchform">
             <input class="form-control mr-sm-2" type="search" placeholder="Search and Select a Country (You can search by their ID)"
                 spellcheck="false" id="tagsCountries" aria-label="Search" />         
         </form>
         <div id="error-message" class="ps-2 mb-2"></div>
+        <div id="butoes" class="container">
+          <a id="butao" class="btn btn-border-4" href="">Summer</a>
+        </div>
 
         <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records">
             <div style="justify-content: space-evenly;">
@@ -253,7 +314,7 @@
                                             
                                         </a>
                                     </button>
-                                        <button data-bind="click: () => $parent.toggleFavourite(Id), attr : { 'id': 'favourite_' + Id }" class="btn btn-favourite">
+                                        <button id="favourite" data-bind="click: () => $parent.toggleFavourite(Id), attr : { 'id': 'favourite_' + Id }" class="btn btn-favourite">
                                            <i data-bind="attr: {'class': $parent.favourites().includes(Id)? 'fa fa-heart text-danger' : 'fa fa-heart-o'}" id="heart" class="fa fa-heart-o" title="Selecione para adicionar aos favoritos"></i>
                                         </button>
                                 </div>
@@ -263,7 +324,7 @@
                 </div>
             </div> 
        </div>
-
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
