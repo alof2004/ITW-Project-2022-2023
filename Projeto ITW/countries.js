@@ -45,7 +45,7 @@ var vm = function () {
 
     $().ready(function () {
         $("#tagsCountries").autocomplete({
-            minlenght: 3,
+            minLength: 3,
             source: function (request, response) {
                 $.ajax({
                     url: "http://192.168.160.58/Olympics/api/Countries/SearchByName?q=" + request.term,
@@ -120,31 +120,6 @@ var vm = function () {
             self.favourites(storage);
         }
     }
-    
-    $().ready(function () {
-        $("#tags").autocomplete({
-            minlenght: 3,
-            source: function (request, response) {
-                $.ajax({
-                    url: "http://192.168.160.58/Olympics/api/Countries//SearchByName?q=" + request.term,
-                    dataType: "json"
-                }).done(function ( APIdata) {
-                    data = APIdata;
-                    let countries = data.map(function (Country) {
-                        return {
-                            label: Country.Name,
-                            value: Country.Id
-                        }
-                             });
-                    response(countries.slice(0, 10));
-                });
-            },
-            select: function (event, ui) {
-                window.location.href = "countriesDetails.html?id=" + ui.item.value;
-            },
-        }).find("li").css({ width: "150px" });
-    });
-
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getCountries...');

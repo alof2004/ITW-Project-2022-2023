@@ -45,7 +45,7 @@ var vm = function () {
 
     $().ready(function () {
         $("#tagsGames").autocomplete({
-            minlenght: 3,
+            minLengthht: 3,
             source: function (request, response) {
                 $.ajax({
                     url: "http://192.168.160.58/Olympics/api/Games/SearchByName?q=" + request.term,
