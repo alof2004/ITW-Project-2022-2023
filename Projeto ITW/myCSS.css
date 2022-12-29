@@ -134,3 +134,37 @@ li.page-item a {
     color: #fff;
     outline: 0;
 }
+
+
+#divisor {
+    width: 100%;
+    height: 1px;
+    display: block;
+    position: relative;
+    margin-bottom: 0em;
+    padding: 2em 0;
+  }
+  #divisor:after, #divisor:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 50%;
+    left: 0;
+  }
+  #divisor:before {
+    background: linear-gradient(90deg, #10111f 0%, #10111f 50%, transparent 50%, transparent 100%);
+    background-size: 15px;
+    background-position: center;
+    z-index: 1;
+  }
+  #divisor:after {
+    transition: opacity 0.3s ease, -webkit-animation 0.3s ease;
+    transition: opacity 0.3s ease, animation 0.3s ease;
+    transition: opacity 0.3s ease, animation 0.3s ease, -webkit-animation 0.3s ease;
+    background: linear-gradient(to right, #62efab 5%, #f2ea7d 15%, #f2ea7d 25%, #ff8797 35%, #ff8797 45%, #e1a4f4 55%, #e1a4f4 65%, #82fff4 75%, #82fff4 85%, #62efab 95%);
+    background-size: 200%;
+    background-position: 0%;
+    -webkit-animation: bar 15s linear infinite;
+            animation: bar 15s linear infinite;
+  }
