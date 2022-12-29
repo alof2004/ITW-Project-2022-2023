@@ -53,6 +53,172 @@ h5{
 }
 
 
+.number-holder {
+  transition: all 500ms ease-in-out;
+}
+
+.scoreboard {
+  border-radius: 5px;
+  display: flex;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 3rem 50px;
+  flex-direction: column;
+}
+
+.scoreboard__item {
+  display: flex;
+  padding: 1rem 0;
+  width: 100%;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  jusitfy-content: flex-end;
+  opacity: 0;
+  top: 20px;
+  transition: 500ms ease-in-out;
+}
+
+.scoreboard__item.is-visible {
+  opacity: 1;
+  top: 0;
+  transition: 500ms ease-in-out;
+}
+
+.scoreboard__status {
+  font-weight: 300;
+}
+
+.scoreboard__numbers {
+  font-weight: 600;
+  text-align: right;
+  align-self: flex-end;
+  margin-left: 20px;
+  flex: 1;
+}
+
+.scoreboard__bar {
+  width: 100%;
+  margin-top: 1rem;
+  height: 10px;
+  position: relative;
+  border-radius: 5px;
+  transition: all 500ms ease-in-out;
+  display: flex;
+  flex-basis: 100%;
+}
+
+.scoreboard__bar:before {
+  content: "";
+  width: 100%;
+  flex-basis: 100%;
+  clear: both;
+  display: block;
+}
+
+.scoreboard__bar-bar {
+  position: absolute;
+  height: 10px;
+  left: 0;
+  top: 0;
+  width: 0;
+  border-radius: 5px;
+  background: linear-gradient(to right, #f0cf65 0%, #ebc137 100%);
+  transition: all 250ms ease-in-out;
+}
+
+.scoreboard__podiums {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px auto 100px auto;
+  min-height: 350px;
+}
+
+.scoreboard__podiums .scoreboard__podium {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  flex-wrap: wrap;
+  flex: 1;
+  opacity: 0;
+  top: -10px;
+}
+
+.scoreboard__podiums .scoreboard__podium.is-visible {
+  top: 0;
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+}
+
+.scoreboard__podiums .scoreboard__podium-rank {
+  font-size: 4rem;
+  font-weight: 700;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0px;
+  color: black;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.scoreboard__podiums .scoreboard__podium-base {
+  height: 0;
+  background: #ececec;
+  color: #fff;
+  min-width: 150px;
+  border-radius: 5px;
+  transition: all 1000ms ease-in-out;
+  opacity: 0;
+  position: relative;
+}
+
+.scoreboard__podiums .scoreboard__podium-base.is-expanding {
+  opacity: 1;
+}
+
+.scoreboard__podiums .scoreboard__podium-number {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: white;
+}
+
+.scoreboard__podiums .scoreboard__podium-number small {
+  display: block;
+  font-size: 60%;
+  color: white;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.credits {
+  font-size: 14px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+#scoreboard__items {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style-type: decimal;
+}
+
+.oneup-audio {
+  display: none;
+}
+
+.style-switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  font-size: 15px;
+}
 
 
 
@@ -152,7 +318,49 @@ h5{
 
     <b class="hr" id="divisor"></b>    
 
-    
+    <p style="color: white; font-size: 30px; font-family: 'serif'; " class="container"><span>Podium of the best countries (with the most medals)</span></p> 
+
+<div class="scoreboard">
+    <div class="scoreboard__podiums">
+      <div class="scoreboard__podium js-podium" data-height="200px">
+        <div class="scoreboard__podium-base scoreboard__podium-base--second">
+            <div>
+                <img style="height: 200px; width: 150px; border-radius: 5px; " src="SovietUnionFlag.jpg" >
+                <div class="scoreboard__podium-rank">2</div>
+            </div>
+        </div>
+         <div class="scoreboard__podium-number">
+            <p>Soviet Union</p>
+            <p>Medals: 2503</p>
+        </div>
+      
+      </div>
+      <div class="scoreboard__podium js-podium" data-height="250px">
+         <div class="scoreboard__podium-base scoreboard__podium-base--first">
+          <div>
+            <img style="height: 250px; width: 150px; border-radius: 5px; " src="UnitedStatesFlag.jpg" >
+            <div class="scoreboard__podium-rank">1</div>
+          </div>
+        </div>
+          <div class="scoreboard__podium-number">
+            <p>United States</p>
+            <p>Medals: 5637</p>
+        </div>
+      </div>
+      <div class="scoreboard__podium js-podium" data-height="150px">
+         <div class="scoreboard__podium-base scoreboard__podium-base--third">
+            <div>
+                <img style="height: 150px; width: 150px; border-radius: 5px; " src="GermanyFlag.jpg" >
+                <div class="scoreboard__podium-rank">3</div>
+            </div>
+        </div>
+          <div class="scoreboard__podium-number">
+            <p>Germany</p>
+            <p>Medals: 2165</p>
+        </div>
+      </div>
+    </div>
+
  
 <br>
 <br>
@@ -180,5 +388,25 @@ h5{
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/jquery-ui/dist/jquery-ui.min.js"></script>
     <script src="index.js"></script>
+    <script>
+        var sum = 1000; // rank 1.
+        var time = 250;
+
+        $(document).ready(function () {
+        $(".js-podium").each(function () {
+            var t = $(this);
+            setTimeout(function () {
+            t.addClass("is-visible");
+            var h = t.data("height");
+            console.log(h);
+            t.find(".scoreboard__podium-base")
+                .css("height", h)
+                .addClass("is-expanding");
+            }, time);
+            time += 250;
+        });
+        });
+
+    </script>
 </body>
 </html>
