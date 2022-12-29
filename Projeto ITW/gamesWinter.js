@@ -124,7 +124,7 @@ var vm = function () {
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getGames...');
-        var composedUri = self.baseUri() + "&page=" + self.CurrentPage() + "&pageSize=" + self.pagesize();
+        var composedUri = self.baseUri() + "&page=" + id + "&pageSize=" + self.pagesize();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
