@@ -12,6 +12,11 @@
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
     <style>
+            body{
+        background-color: #1F2022;
+    }
+
+
             .slide{
         font-family: 'Roboto', sans-serif;
         transition:0.6s;
@@ -52,7 +57,7 @@
     <div class="container">
         <div class="py-2 border-bottom mb-3 row">
             <div class="col">
-                <h2 data-bind="text:Name()"></h2>
+                <h2 style="color: white;" data-bind="text:Name()"></h2>
             </div>
             <div class="col pt-2" align="right">
                 <a href="./games.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
@@ -61,7 +66,7 @@
         <!-- ko if:Name().length > 0 -->
 
         <div class="row">
-            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+            <div style="color: white;" class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
                 <div class="row border-bottom mx-0 my-1">
                     <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Game Id</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text:Id"></div>
                 </div>
@@ -96,6 +101,11 @@
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <a data-bind="attr: { href:'./gamesStats.html?id=' + Id() }" style="text-decoration: none;">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Medals by Country</button>
+                            </div>
+                        </a>
                     </div>                    
                 </div>
             </div>
@@ -105,8 +115,8 @@
                 </a>
             </div>
         </div>
-        <hr style="border: 2px solid black;" />
-        <div class="row" style="color: black;">
+        <hr style="border: 2px solid white;" />
+        <div class="row" style="color: white;">
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div>Localização:</div>
                 <div>
@@ -123,16 +133,13 @@
             </div>
         </div>
       
-        <div class="row border-bottom mx-0 my-1">
+        <div style="color: white;" class="row border-bottom mx-0 my-1">
                 <div class="col-2">Medals</div>
             <div class="col-10" data-bind="foreach: Medals">
                 <div data-bind="text: MedalName"></div> <div data-bind="text:Counter"></div>
             </div>
         </div>
 
-
-      <a  data-bind="attr: { href:'./gamesStats.html?id=' + Id() }">
-      <button class="card__header-button">Medalhas por País</button></a>
         <!-- /ko -->
     </div>
 
