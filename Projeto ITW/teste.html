@@ -1,3 +1,4 @@
+    
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,41 +22,39 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
 
         var Counter1 = [];
         var Medalhas = [];
 
         $.ajax({
             type: 'GET',
-            url: 'http://192.168.160.58/Olympics/api/Games/FullDetails?id=3',
+            url: 'http://192.168.160.58/Olympics/api/Games/FullDetails?id=2',
             headers: {
                 'Content-Type': 'application/json'
             },
             success: function (data, status, xhr) {
 
-                Medalhas.push((data.Medals).map(({ MedalName }) => MedalName));
-                Counter1.push((data.Medals).map(({ Counter }) => Counter));
-                google.charts.setOnLoadCallback(drawChart);
+                var athData = data;
 
-
+                    Medalhas.push((data.Medals).map(({ MedalName }) => MedalName));
+                    Counter1.push((data.Medals).map(({ Counter }) => Counter));
+                   
+                
             }
         });
-        const ola1 = Counter1[0].map(parseInt);
-        const ola2 = Counter1[1].map(parseInt);
-        const ola3 = Counter1[2].map(parseInt);
-
-        console.log(Medalhas)
-        console.log(Counter1)
-
+                    const ola1 = parseInt(Counter1[0]);
+                    const ola2 = parseInt(Counter1[1]);
+                    const ola3 = parseInt(Counter1[2]);
         function drawChart(Counter1, Medalhas) {
             var data = new google.visualization.DataTable();
             console.log(Counter1);
-            data.addColumn('string', 'Medalha');
-            data.addColumn('number', 'Quantidade');
+            data.addColumn('string', 'Pizza');
+            data.addColumn('number', 'Populartiy');
             data.addRows([
-                [Medalhas[0], ola1],
-                [Medalhas[1], ola2],
-                [Medalhas[2], ola3]
+                ["Ouro", ola1],
+                ["Prata", ola2],
+                ["Bronze", ola3]
             ]);
             var options = {
                 title: 'My Daily Activities'
@@ -63,5 +62,6 @@
             var chart = new google.visualization.PieChart(document.getElementById('pie'));
             chart.draw(data, options);
         }
+
     </script>
 </body>
