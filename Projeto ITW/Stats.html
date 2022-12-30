@@ -13,9 +13,6 @@
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
     <style>
-        body {
-            background-color: #1F2022;
-        }
         #wrapper {
             display: flex;
             justify-content: center;
@@ -24,7 +21,7 @@
         }
 
         .content {
-            max-width: 1300px;
+            max-width: 1600px;
             width: 100%;
             min-width: 260px;
             margin-top: 50px;
@@ -192,30 +189,90 @@
         <div class="content">
            <!-- Tab links -->
            <div class="tabs">
-              <button class="tablinks active" data-country="London"><p>Graph1</p></button>
-              <button class="tablinks" data-country="Paris"><p>Graph2</p></button>
-              <button class="tablinks" data-country="Barcelona"><p>Graph3</p></button>
-              <button class="tablinks" data-country="Madrid"><p>Graph4</p></button>
+              <button class="tablinks active" data-country="London"><p>Number of Atheletes per Olympic Games edition</p></button>
+              <button class="tablinks" data-country="Paris"><p>Number of Competitions per Olympic Games edition</p></button>
+              <button class="tablinks" data-country="Barcelona"><p>Number of Countries per Olympic Games edition</p></button>
+              <button class="tablinks" data-country="Madrid"><p>Number of Modalities per Olympic Games edition</p></button>
+              <button class="tablinks" data-country="Lisboa"><p>Number of Medals by Country over all Olympic Games editions </p></button>
            </div>
      
            <!-- Tab content -->
            <div class="wrapper_tabcontent">
               <div id="London" class="tabcontent active">
-                 <p>London Text</p>
+                <div class="row">
+                  <div class="col-md-12" >
+                      <div class="card mt-3">
+                          <div class="card-header">
+                              Number of Atheletes per Olympic Games edition                    
+                          </div>
+                          <div class="card-body">
+                              <canvas style="height:550px; width:1500px" id="Chart2"></canvas>
+                          </div>                    
+                      </div>
+                  </div>
+              </div>
               </div>
      
               <div id="Paris" class="tabcontent">
-                 <p>Paris Text </p>
+                <div class="row">
+                  <div class="col-md-12" >
+                      <div class="card mt-3">
+                          <div class="card-header">
+                              Number of Competitions per Olympic Games edition                  
+                          </div>
+                          <div class="card-body">
+                              <canvas style="height:550px; width:1500px" id="Chart3"></canvas>
+                          </div>                    
+                      </div>
+                  </div>
+              </div>
               </div>
      
               <div id="Barcelona" class="tabcontent">
-                 <p>Barcelona Text </p>
+                <div class="row">
+                  <div class="col-md-12" >
+                      <div class="card mt-3">
+                          <div class="card-header">
+                              Number of Countries per Olympic Games edition                   
+                          </div>
+                          <div class="card-body">
+                              <canvas style="height:550px; width:1500px" id="Chart4"></canvas>
+                          </div>                    
+                      </div>
+                  </div>
+              </div>
               </div>
      
               <div id="Madrid" class="tabcontent">
-                 <p>Madrid text 
-                 </p>
+                <div class="row">
+                  <div class="col-md-12" >
+                      <div class="card mt-3">
+                          <div class="card-header">
+                              Number of Modalities per Olympic Games edition                  
+                          </div>
+                          <div class="card-body">
+                              <canvas style="height:550px; width:1500px" id="Chart5"></canvas>
+                          </div>                    
+                      </div>
+                  </div>
               </div>
+              </div>
+
+              <div id="Lisboa" class="tabcontent">
+                <div class="row">
+                  <div class="col-md-12" >
+                      <div class="card mt-3">
+                          <div class="card-header">
+                              Number of Medals by Country over all Olympic Games editions                    
+                          </div>
+                          <div class="card-body">
+                              <canvas id="Chart6"></canvas>
+                          </div>                    
+                      </div>
+                  </div>
+              </div>
+              </div>
+
            </div>
         </div>
      </section>
@@ -250,33 +307,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script>
-        // tabs
-        var tabLinks = document.querySelectorAll(".tablinks");
-        var tabContent = document.querySelectorAll(".tabcontent");
-
-        tabLinks.forEach(function(el) {
-        el.addEventListener("click", openTabs);
-        });
-
-        function openTabs(el) {
-        var btnTarget = el.currentTarget;
-        var country = btnTarget.dataset.country;
-
-        tabContent.forEach(function(el) {
-            el.classList.remove("active");
-        });
-
-        tabLinks.forEach(function(el) {
-            el.classList.remove("active");
-        });
-
-        document.querySelector("#" + country).classList.add("active");
-        
-        btnTarget.classList.add("active");
-        }
-
-    </script>
+  <script src="Stats.js"></script>
 </body>
 
 </html>
