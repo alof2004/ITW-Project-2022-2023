@@ -12,6 +12,7 @@
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="..\lib\jquery-ui\dist\themes\base\jquery-ui.css">
     <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="search.css" />
     <style>
         
         body {
@@ -219,12 +220,12 @@
             </div>
         </div>
         <!-- /ko -->
-
-        <form class="form-inline py-2 my-lg-0 " id="searchform">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search and Select a Modality (You can by search their ID)"
-                spellcheck="false" id="tagsModalities" aria-label="Search" />         
-        </form>
-        <div id="error-message" class="ps-2 mb-2"></div>
+                <form action="javascript:"  id="forms1" class="search-bar">
+	                <input type="search" id="SearchBar"  aria-label="Search"  name="search" pattern=".*\S.*" required>
+	                <button id="button-addon1" data-bind="click:pesquisa" class="search-btn" type="submit">
+		                <span>Search</span>
+	                </button>
+                </form>
 
       
         <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records">

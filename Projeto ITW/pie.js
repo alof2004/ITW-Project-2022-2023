@@ -34,10 +34,23 @@ google.charts.load('current', { 'packages': ['corechart'] }).then(function () {
                     ['Bronze', ola3]
                 ]);
                 var options = {
-                    legend: {color:'white'},
-                    title: 'Medals atru',
+
+                    legend: { color: 'white' },
+                    title: 'Medals assigned in this Olympics Game Edition',
                     backgroundColor: '#1F2022',
-                    colors: ['#FAC213', '#AAAAAA', '#A64B2A']
+                    titleTextStyle: {
+                        color:'white'
+                    },
+                    colors: ['#FAC213', '#AAAAAA', '#A64B2A'],
+                    legend: {
+                        textStyle: {
+                            color: 'white',
+                            fontSize: 14,
+                            italic: false
+                        }
+                    },
+                    width: 700,
+                    height: 700,
                 };
                 var chart = new google.visualization.PieChart(document.getElementById('pie'));
                 chart.draw(data, options);

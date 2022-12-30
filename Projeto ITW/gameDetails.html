@@ -12,6 +12,9 @@
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
     <style>
+        body{
+            background-color:#1F2022
+        }
             .slide{
         font-family: 'Roboto', sans-serif;
         transition:0.6s;
@@ -111,36 +114,30 @@
             </div>
         </div>
         <hr style="border: 2px solid white;" />
-        <div class="row" style="color: white;">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                <div>Localização:</div>
+
+        <div style="color: white;">
+            <div style="margin-left:auto; margin-right:auto;width:50%" data-bind="visible: Photo() != '' && Photo() != null">
                 <div>
-                    <iframe style="width:85%; height: 400px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&q=' + CountryName() + City()}"></iframe>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" data-bind="visible: Photo() != '' && Photo() != null">
-                <div>Photo:</div>
-                <div>
+                    <figure style="margin-right:0px; padding-right:0px">
                     <a data-bind="attr: { href: Photo }" target="_blank">
-                        <img style="max-width: 500px;" class="img-thumbnail" data-bind="attr:{src: Photo}">
+                        <img style=" max-width: 95%;" class="img-thumbnail" data-bind="attr:{src: Photo}">
                     </a>
+                        <figcaption style="font-size:10px; text-align:center; font-style:italic">Photo of this Olympic Game Edition       </figcaption>
+                    </figure>
                 </div>
             </div>
-        </div>
-      
-        <div style="color: white;" class="row border-bottom mx-0 my-1">
-                <div class="col-2">Medals</div>
-            <div class="col-10" data-bind="foreach: Medals">
-                <div data-bind="text: MedalName"></div> <div data-bind="text:Counter"></div>
+            <div class="row" >
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span data-bind="text:Name"></span><span>'s Location</span>
+                <div>
+                    <iframe style="width:90%; height: 600px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&q=' + CountryName() + City()}"></iframe>
+                </div>
             </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" id="pie" style="background-color: #1F2022; width: 400px; height: 600px; padding:0px"></div>
         </div>
-        <div id="pie" style="background-color: #1F2022; width: 500px; height: 500px;"></div>
-
-
-      <a  data-bind="attr: { href:'./gamesStats.html?id=' + Id() }">
-      <button class="card__header-button">Medalhas por País</button></a>
+      </div>      
         <!-- /ko -->
-    </div>
+
 
     <!--Athletes MODAL-->
     <div class="modal fade" id="AthletesModal" tabindex="-1" aria-hidden="true">
@@ -180,18 +177,6 @@
         </div>
         </div>
     </div>
-     <table>
-            <tbody data-bind="foreach:Medals">
-                <tr>
-                   <td class="align-middle">
-                       <p data-bind="text: MedalName"></p>
-                   </td>
-                   <td class="align-middle">
-                       <p data-bind="text: Counter"></p>
-                   </td>
-                </tr>
-            </tbody>
-        </table>
     <!--END MODAL-->    
 
     <!-- Modal -->
