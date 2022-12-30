@@ -45,7 +45,7 @@ var vm = function () {
 
     $().ready(function () {
         $("#tagsModalities").autocomplete({
-            minlenght: 3,
+            minLength: 2,
             source: function (request, response) {
                 $.ajax({
                     url: "http://192.168.160.58/Olympics/api/Modalities/SearchByName?q=" + request.term,
@@ -120,30 +120,6 @@ var vm = function () {
             self.favourites(storage);
         }
     }
-
-    $().ready(function () {
-        $("#tags").autocomplete({
-            minlenght: 3,
-            source: function (request, response) {
-                $.ajax({
-                    url: "http://192.168.160.58/Olympics/api/Modalities//SearchByName?q=" + request.term,
-                    dataType: "json"
-                }).done(function ( APIdata) {
-                    data = APIdata;
-                    let modalities = data.map(function (Modalities) {
-                        return {
-                            label: Modalities.Name,
-                            value: Modalities.Id
-                        }
-                             });
-                    response(modalities.slice(0, 10));
-                });
-            },
-            select: function (event, ui) {
-                window.location.href = "modalitiesDetails.html?id=" + ui.item.value;
-            },
-        }).find("li").css({ width: "150px" });
-    });
 
     //--- Page Events
     self.activate = function (id) {
