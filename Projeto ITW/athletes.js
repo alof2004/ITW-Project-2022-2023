@@ -136,21 +136,6 @@ var vm = function () {
             console.log(self.records())
             self.totalRecords(data.length);
             self.currentPage(page);
-            if (page == 1) {
-                self.hasPrevious(false)
-            } else {
-                self.hasPrevious(true)
-            }
-            if (self.records() - 24 > 0) {
-                self.hasNext(true)
-            } else {
-                self.hasNext(false)
-            }
-            if (Math.floor(self.totalRecords() / 24) == 0) {
-                self.totalPages(1);
-            } else {
-                self.totalPages(Math.ceil(self.totalRecords() / 24));
-            }
         });
 
     };
