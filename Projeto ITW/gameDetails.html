@@ -12,6 +12,12 @@
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
     <style>
+        
+        body {
+            background-color: #1F2022;
+            color:white
+        }
+
             .slide{
         font-family: 'Roboto', sans-serif;
         transition:0.6s;
@@ -129,7 +135,7 @@
                 <div data-bind="text: MedalName"></div> <div data-bind="text:Counter"></div>
             </div>
         </div>
-
+        <div id="pie" style="background-color: #1F2022; width: 500px; height: 500px;"></div>
 
       <a  data-bind="attr: { href:'./gamesStats.html?id=' + Id() }">
       <button class="card__header-button">Medalhas por País</button></a>
@@ -174,6 +180,18 @@
         </div>
         </div>
     </div>
+     <table>
+            <tbody data-bind="foreach:Medals">
+                <tr>
+                   <td class="align-middle">
+                       <p data-bind="text: MedalName"></p>
+                   </td>
+                   <td class="align-middle">
+                       <p data-bind="text: Counter"></p>
+                   </td>
+                </tr>
+            </tbody>
+        </table>
     <!--END MODAL-->    
 
     <!-- Modal -->
@@ -213,5 +231,8 @@
     <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="gameDetails.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="pie.js"></script>
 </body>
 </html>
