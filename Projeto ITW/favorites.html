@@ -20,8 +20,11 @@
         .card {
             margin-top: 20px;
             transition:0.5s;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            background-color: #f1f1f1;
+            box-shadow: 2px 10px 8px 0 rgba(0, 0, 0, 0.2);
+            background-color: #1F2022;
+            color:white;
+            font-family: 'Questrial', sans-serif;
+            text-shadow: 4px 4px 0px #205295, 3px 3px 0px #205295, 6px 6px 2px black, -2px -2px 2px black;
             height: auto;
             transition:0.5s;
 
@@ -34,8 +37,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container" style="padding:2px">
             <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,10 +52,17 @@
                     <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
                     <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
                     <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
                 </ul>
+                <form class="flex" role="search" action="search.html" method="GET">
+                    <div class="input-group">
+                        <div class="ui-widget">
+                            <input id="searchAll" type="text" value="" name="SearchAll"
+                                class="form-control rounded-start rounded-end rounded-0 " placeholder="Search or Select..."
+                                aria-label="Search" aria-describedby="button-addon2">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
@@ -70,7 +80,7 @@
             </div>
             <div data-bs-toggle="modal" data-bs-target="#CompetitionsModal">
                 <div class="card">
-                    <img style="height: 250px;" src="https://images.news18.com/ibnlive/uploads/2019/08/Sports2.png?impolicy=website&width=534&height=356" class="card-img-top">
+                    <img style="height: 250px; object-fit:cover" src="../images/competitions.jpg" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title" style="text-align: center;">Favorite Competitions</h2>
                     </div>
@@ -78,7 +88,7 @@
             </div>
             <div data-bs-toggle="modal" data-bs-target="#CountriesModal">
                 <div class="card">
-                    <img style="height: 250px;" src="https://wallpapercave.com/wp/wp3846205.jpg" class="card-img-top">
+                    <img style="height: 250px;" src="../images/countries.jpg" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title" style="text-align: center;">Favorite Countries</h2>
                     </div>
@@ -86,7 +96,7 @@
             </div>
             <div data-bs-toggle="modal" data-bs-target="#GamesModal">
                 <div class="card">
-                    <img style="height: 250px;" src="https://swimswam.com/wp-content/uploads/2017/01/Rio-Opening-Ceremonies-Courtesy-of-Rio-2016-1080x720-1080x720.jpg" class="card-img-top">
+                    <img style="height: 250px;" src="../images/games.jpg" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title" style="text-align: center;">Favorite Games</h2>
                     </div>
@@ -94,7 +104,7 @@
             </div>
             <div data-bs-toggle="modal" data-bs-target="#ModalitiesModal">
                 <div class="card">
-                    <img style="height: 250px;" src="https://png.pngitem.com/pimgs/s/150-1500789_olympic-games-logo-png-olympic-games-transparent-png.png" class="card-img-top">
+                    <img style="height: 250px; object-fit:cover" src="../images/modalities.jpg.jpg" class="card-img-top">
                     <div class="card-body">
                         <h2 class="card-title" style="text-align: center;">Favorite Modalities</h2>
                     </div>
@@ -296,6 +306,8 @@
     <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
     <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/jquery-ui/dist/jquery-ui.min.js"></script>
     <script src="favorites.js"></script>
+    <script src="search.js"></script>
 </body>
 </html>

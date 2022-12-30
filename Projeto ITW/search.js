@@ -2,8 +2,9 @@
 
 
 
-$('document').ready(function () {
-
+////////////////////////////
+// ViewModel KnockOut
+$(document).ready(function () {
 
     var vm = function () {
         console.log('ViewModel initiated...');
@@ -13,7 +14,7 @@ $('document').ready(function () {
         self.error = ko.observable('');
         self.passingMessage = ko.observable('');
         self.records = ko.observableArray([]);
-        self.availableTags = ko.observableArray([]);//!!!!
+        self.availableTags = ko.observableArray([]);//!!
         self.currentPage = ko.observable(1);
         // self.pagesize = ko.observable(100);
         self.totalRecords = ko.observable();
@@ -82,17 +83,53 @@ $('document').ready(function () {
             while (Date.now() - start < milliseconds);
         }
 
-        function showLoading() {
-            $("#myModal").modal('show', {
-                backdrop: 'static',
-                keyboard: false
-            });
-        }
-        function hideLoading() {
-            $('#myModal').on('shown.bs.modal', function (e) {
-                $("#myModal").modal('hide');
-            })
-        }
+    function showLoading() {
+        $("#myModal").modal('show', {
+            backdrop: 'static',
+            keyboard: false
+        });
+    }
+    function hideLoading() {
+        $('#myModal').on('shown.bs.modal', function (e) {
+            $("#myModal").modal('hide');
+        })
+    }
+        $("#searchAll").autocomplete({
+            minLength: 3,
+            source: function (request, response) {
+                $.ajax({
+                    url: "http://192.168.160.58/Olympics/api/Utils/Search?q=" + request.term,
+                    dataType: "json"
+                }).done(function (APIdata) {
+                    data = APIdata;
+                    let todos = data.map(function (todo) {
+                        return {
+                            value1: todo.TableName,
+                            label: todo.Name,
+                            value: todo.Id
+                        }
+                    });
+                    response(todos.slice(0, 10));
+                });
+            },
+            select: function (event, ui) {
+                if (ui.item.value1 === 'Athletes') {
+                    window.location.href = "athletesDetails.html?id=" + ui.item.value;
+                }
+                else if (ui.item.value1 === 'Countries') {
+                    window.location.href = "countriesDetails.html?id=" + ui.item.value;
+                }
+                else if (ui.item.value1 === 'Competitions') {
+                    window.location.href = "competitionsDetails.html?id=" + ui.item.value;
+                }
+                else if (ui.item.value1 === 'Modalities') {
+                    window.location.href = "modalitiesDetails.html?id=" + ui.item.value;
+                }
+                else if (ui.item.value1 === 'Games') {
+                    window.location.href = "gameDetails.html?id=" + ui.item.value;
+                }
+            },
+        }).find("li").css({ width: "150px" });
 
         function getUrlParameter(sParam) {
             var sPageURL = window.location.search.substring(1),
@@ -136,44 +173,6 @@ $('document').ready(function () {
             }
         };
         //
-        $('#searchAthlete').autocomplete({
-            // source: self.availableTags(),
-            max: 10,
-            minLength: 4,
-            source:
-                function (request, response) {
-                    $.ajax({
-                        type: "GET",
-                        url: `http://192.168.160.58/Olympics/api/Athletes/SearchByName?`,
-                        data: {
-                            q: $('#searchAthlete').val()
-                        },
-                        success: function (data) {
-
-                            if (!data.length) {
-                                var result = [{
-                                    label: 'No matches found',
-                                    value: response.term
-                                }];
-                                response(result);
-                            } else {
-
-                                var nData = $.map(data, function (value, key) {
-                                    return {
-                                        label: value.Name,
-                                        value: value.Name
-                                    }
-                                });
-                                results = $.ui.autocomplete.filter(nData, request.term);
-                                response(results);
-                            }
-                        },
-                        error: function () {
-                            alert("error!");
-                        }
-                    })
-                },
-        });
         $('#searchAll').autocomplete({
             // source: self.availableTags(),
             max: 50,
@@ -226,80 +225,10 @@ $('document').ready(function () {
 
         //----------FAVORITOS-------------// 
         console.log("ready!");
-        self.favData = {
-            "favAthletes": [],
-            "favCompetitions": [],
-            "favModalities": [],
-            "favCountries": [],
-            "favGames": []
-        };
-        self.favAthletesData = ko.observableArray([]);
-        self.favCompetitionsData = ko.observableArray([]);
-        self.favModalitiesData = ko.observableArray([]);
-        self.favCountriesData = ko.observableArray([]);
-        self.favGamesData = ko.observableArray([]);
-
-
-
-
-        self.updateLocalStorage = (key, data) => {
-            localStorage.setItem(key, JSON.stringify(data))
-        }
-
-        self.checkButtons = function (id) {
-            for (let k in self.favData) {
-                if (self.favData[k].includes(String(id))) {
-                    $('#' + k + '-btn' + id).addClass("active")
-                }
-            }
-        }
-
-        self.updatefavData = function (id, name) {
-            if (!$('#' + name + '-btn' + id).hasClass("active")) {
-                //Adicionar à lista de favoritos
-                if (!self.favData[name].includes(id))
-                    self.favData[name].push(String(id))
-
-                self.updateLocalStorage(name, self.favData[name])
-                $('#' + name + '-btn' + id).addClass("active")
-            } else {
-                //Remover do favoritos
-                self.favData[name].splice(self.favData[name].indexOf(id), 1)
-                self.updateLocalStorage(name, self.favData[name])
-
-                $('#' + name + '-btn' + id).removeClass("active")
-            }
-            console.log(self.favData)
-        }
-
-        self.init = function () {
-            for (let k in self.favData) {
-                console.log(k, 'k')
-                if (localStorage.getItem(k) != null) {
-                    self.favData[k] = JSON.parse(localStorage.getItem(k))
-                } else {
-                    self.favData[k] = []
-                }
-            }
-
-
-
-
-        }
-
-        self.init()
-        //----------END-FAVORITOS-------------//
-
     };
 
 
     ko.applyBindings(new vm());
-    console.count('td')
-    //-Linha-para-eliminar-a-cache-do-browser-//
-    // localStorage.clear();
-    //---------------------------------------//
-    // console.log(self.favData, 'favData')
-    // console.log(self.favAthletesData(), 'favAthletesData')
 });
 
 

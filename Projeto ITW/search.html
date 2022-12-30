@@ -15,14 +15,42 @@
     <link rel="stylesheet" href="myCSS.css" />
 </head>
 <body>
-    <div class="container">
-        <table class="table table-striped table-sm ">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container" style="padding:2px">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                    <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
+                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                    <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
+                    <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
+                    <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
+                </ul>
+                <form class="flex" role="search" action="search.html" method="GET">
+                    <div class="input-group">
+                        <div class="ui-widget">
+                            <input id="searchAll" type="text" value="" name="SearchAll"
+                                class="form-control rounded-start rounded-end rounded-0 " placeholder="Search or Select..."
+                                aria-label="Search" aria-describedby="button-addon2">
+                        </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div style="padding-top:40px" class="container">
+        <table class="table table-dark table-sm ">
             <thead class="bg-dark text-light">
                 <tr>
                     <th scope="col">Table Name</th>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
-
                     <th scope="col" class="text-right"></th>
                 </tr>
             </thead>
@@ -35,50 +63,20 @@
                     <td class="align-middle" data-bind="text:Name"></td>
 
                     <td class="text-end">
-                        <a class="btn btn-outline-dark mb-2 "
+                        <a class="btn  btn-outline-light mb-2 "
                             data-bind="attr: { href:'./'+TableName+'Details.html?id=' + Id }">
-                            <i class="fa fa-eye" title="Selecione para ver detalhes"></i>
+                            <i class="fa fa-eye fa-light text-light" title="Selecione para ver detalhes"></i>
                         </a><br>
-                        <!-- add class active to the button if the athlete is in the favourites list -->
-                        <button class="btn btn-outline-danger " id="fav'+TableName+'-btn"
-                            data-bind="attr:{'id':'fav'+TableName+'-btn'+Id} ,click: $parent.updatefavData.bind($data,Id,'fav'+TableName)">
-                            <i class="fa fa-heart-o" data-bind="attr : { 'id': 'favourite_' + Id }"
-                                title="Selecione para adicionar aos favoritos"></i>
-                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content align-items-center">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <img alt="rings" src="https://static.dicionariodesimbolos.com.br/upload/2d/6c/aneis-olimpicos-1_xl.png" height="30" /> Loading data...
-                    </h5>
-                </div>
-                <!-- <div class="modal-body text-center">
-                    <i class="fa fa-spin fa-3x fa-refresh"></i>
-                </div> -->
-                <div class="midle">
-                    <div class="bar bar1"></div>
-                    <div class="bar bar2"></div>
-                    <div class="bar bar3"></div>
-                    <div class="bar bar4"></div>
-                    <div class="bar bar5"></div>
-                    <div class="bar bar6"></div>
-                    <div class="bar bar7"></div>
-                    <div class="bar bar8"></div>
-                </div>
-            </div>
-        </div>
-    </div>
- 
+
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/jquery-ui/dist/jquery-ui.min.js"></script>
  <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
  <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
- <script src="../lib/jquery/dist/jquery.min.js"></script>
  <script src="search.js"></script>
 </body>
 </html>

@@ -1,0 +1,223 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2022/23 - Olympic Games edition Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="myCSS.css" />
+    <style>
+        body{
+            background-color:#1F2022
+        }
+            .slide{
+        font-family: 'Roboto', sans-serif;
+        transition:0.6s;
+        color:white;
+        background-color: #205295
+    }
+    .slide:hover,
+    .slide:focus {
+    background-color:none;
+
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                    <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
+                    <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
+                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
+                    <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
+                    <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Work Area-->
+    <div class="container">
+        <div class="py-2 border-bottom mb-3 row">
+            <div class="col">
+                <h2 style="color: white;" data-bind="text:Name()"></h2>
+            </div>
+            <div class="col pt-2" align="right">
+                <a href="./games.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+            </div>
+        </div>
+        <!-- ko if:Name().length > 0 -->
+
+        <div class="row">
+            <div style="color: white;" class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+                <div class="row border-bottom mx-0 my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Game Id</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text:Id"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Name</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text:Name"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Country Name</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text: CountryName"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">City Name</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text: City"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Year</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text: Year"></div>
+                </div>
+                <div class="row border-bottom mx-0  my-1">
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-3 col-3">Season</div><div class="col-xl-10 col-lg-10 col-md-9 col-sm-9 col-9" data-bind="text: Season"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div data-bs-toggle="modal" data-bs-target="#AthletesModal">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Athletes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div data-bs-toggle="modal" data-bs-target="#ModalitiesModal">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Modalities</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                        <a data-bind="attr: { href:'./gamesStats.html?id=' + Id() }" style="text-decoration: none;">
+                            <div class="row mx-0  my-1 justify-content-center">
+                                <button class="btn third">Medals by Country</button>
+                            </div>
+                        </a>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-8" align="right" data-bind="visible: Logo() != '' && Logo() != null">  
+                <a data-bind="attr: { href: Logo }" target="_blank">
+                    <img style="max-width: 400px;" class="img" data-bind="attr:{src: Logo}">
+                </a>
+            </div>
+        </div>
+        <hr style="border: 2px solid white;" />
+
+        <div style="color: white;">
+            <div style="margin-left:auto; margin-right:auto;width:50%" data-bind="visible: Photo() != '' && Photo() != null">
+                <div>
+                    <figure style="margin-right:0px; padding-right:0px">
+                    <a data-bind="attr: { href: Photo }" target="_blank">
+                        <img style=" max-width: 95%;" class="img-thumbnail" data-bind="attr:{src: Photo}">
+                    </a>
+                        <figcaption style="font-size:10px; text-align:center; font-style:italic">Photo of this Olympic Game Edition       </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="row" >
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <span data-bind="text:Name"></span><span>'s Location</span>
+                <div>
+                    <iframe style="width:90%; height: 600px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&q=' + CountryName() + City()}"></iframe>
+                </div>
+            </div>
+          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" id="pie" style="background-color: #1F2022; width: 400px; height: 600px; padding:0px"></div>
+        </div>
+      </div>      
+        <!-- /ko -->
+
+
+    <!--Athletes MODAL-->
+    <div class="modal fade" id="AthletesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Athletes who participated in this edition of the Olympic Games</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12" data-bind="foreach: Athletes">
+                    <a class="btn margin-left slide" style="border-color:black; max-height:100px; width:150px;" data-bind="attr: { href: './athletesDetails.html?id='+Id }">
+                    <div data-bind="text: Name"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--END MODAL-->
+
+    <!--Modalities MODAL-->
+    <div class="modal fade" id="ModalitiesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Modalities present in this edition of the Olympic Games</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12" data-bind="foreach: Modalities">
+                    <a class="btn margin-left slide" style="border-color:black; height:40px; width:150px;" data-bind="attr: { href: './ModalitiesDetails.html?id='+Id }">
+                    <div data-bind="text: Name"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--END MODAL-->    
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <img src="../images/loadingSmall.gif" height="30" /> Loading data...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <img style="height:100px" src="../images/loadingRun.gif" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Work Area -->
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2022/23</div>
+                <div class="icon-bar">
+                  <a target="_blank" href="https://www.facebook.com/olympics/" class="facebook"><i class="fa fa-facebook fa-lg"></i></a>
+                  <a target="_blank" href="https://twitter.com/Olympics?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="twitter"><i class="fa fa-twitter fa-lg"></i></a>
+                  <a target="_blank" href="https://www.google.com/search?q=olympics+games&rlz=1C1ONGR_pt-PTPT1023PT1023&oq=olympics+games&aqs=chrome..69i57j0i512l4j69i60l3.2882j0j7&sourceid=chrome&ie=UTF-8" class="google"><i class="fa fa-google fa-lg"></i></a>
+                  <a target="_blank" href="https://ch.linkedin.com/company/international-olympic-committee" class="linkedin"><i class="fa fa-linkedin fa-lg"></i></a>
+                  <a target="_blank" href="https://www.youtube.com/channel/UCTl3QQTvqHFjurroKxexy2Q" class="youtube"><i class="fa fa-youtube fa-lg"></i></a>
+                  <a target="_blank" href="https://www.instagram.com/olympics/?hl=en" class="instagram"><i class="fa fa-instagram fa-lg"></i></a>
+                </div>
+            <div class="navbar-nav">
+                
+                <div class="nav-item text-end"><a target="_blank" href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="gameDetails.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="pie.js"></script>
+</body>
+</html>

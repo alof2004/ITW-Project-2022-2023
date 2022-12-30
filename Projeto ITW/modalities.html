@@ -165,8 +165,8 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container" style="padding:2px">
             <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -180,10 +180,17 @@
                     <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
                     <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
                     <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
                     <li id="favoritos" class="nav-item"><a class="nav-link" aria-current="page" href="favorites.html"><i class="fa fa-heart-o text-danger"></i> Favorites</a></li>
                 </ul>
+                <form class="flex" role="search" action="search.html" method="GET">
+                    <div class="input-group">
+                        <div class="ui-widget">
+                            <input id="searchAll" type="text" value="" name="SearchAll"
+                                class="form-control rounded-start rounded-end rounded-0 " placeholder="Search or Select..."
+                                aria-label="Search" aria-describedby="button-addon2">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
@@ -298,5 +305,6 @@
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="../lib/jquery-ui/dist/jquery-ui.min.js"></script>
     <script src="modalities.js"></script>
+    <script src="search.js"></script>
 </body>
 </html>

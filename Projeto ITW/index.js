@@ -1,5 +1,5 @@
 $().ready(function () {
-    $("#tags").autocomplete({
+    $("#searchAll").autocomplete({
         minLength: 3,
         source: function (request, response) {
             $.ajax({
