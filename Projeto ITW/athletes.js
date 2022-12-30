@@ -44,7 +44,6 @@ var vm = function () {
         return list;
     };
 
-
     self.toggleFavourite = function (id) {
         if (self.favourites.indexOf(id) == -1) {
             self.favourites.push(id);
@@ -136,6 +135,21 @@ var vm = function () {
             console.log(self.records())
             self.totalRecords(data.length);
             self.currentPage(page);
+            if (page == 1) {
+                self.hasPrevious(false)
+            } else {
+                self.hasPrevious(true)
+            }
+            if (self.records() - 24 > 0) {
+                self.hasNext(true)
+            } else {
+                self.hasNext(false)
+            }
+            if (Math.floor(self.totalRecords() / 24) == 0) {
+                self.totalPages(1);
+            } else {
+                self.totalPages(Math.ceil(self.totalRecords() / 24));
+            }
         });
 
     };
@@ -158,6 +172,9 @@ var vm = function () {
         });
     }
 
+
+
+        
     function sleep(milliseconds) {
         const start = Date.now();
         while (Date.now() - start < milliseconds);
@@ -190,17 +207,26 @@ var vm = function () {
         }
     };
 
+    $("#pagSearch").hide()
+    if (window.location.href.indexOf("search") > -1) {
+        $("#pag").hide();
+        $("#pagSearch").show();
+    }
     self.pesquisa = function () {
         self.pesquisado($("#SearchBar").val().toLowerCase());
         if (self.pesquisado().length > 0) {
-            window.location.href = "athletes.html?search=" + self.pesquisado();
+            localStorage.setItem('pesquisa', self.pesquisado());
+            window.location.href = "athletes.html?search=" + self.pesquisado() + '&page=' + '1';
+            
+            
         }
     }
+    
     //--- start ....
     showLoading();
     $("#SearchBar").val(undefined);
     self.pesquisado = ko.observable(getUrlParameter('search'));
-
+    
     var pg = getUrlParameter('page');
     if (undefined == undefined) {
         if (self.pesquisado() == undefined) {
@@ -243,6 +269,6 @@ $(document).ready(function () {
     ko.applyBindings(new vm());
 });
 
-$(document).ajaxComplete(function (event, xhr, options) {
-    $("#myModal").modal('hide');
-})
+    $(document).ajaxComplete(function (event, xhr, options) {
+        $("#myModal").modal('hide');
+    });
