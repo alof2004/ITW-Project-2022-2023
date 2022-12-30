@@ -2,9 +2,9 @@
 
 
 
-////////////////////////////
-// ViewModel KnockOut
 $('document').ready(function () {
+
+
     var vm = function () {
         console.log('ViewModel initiated...');
         //---Variáveis locais
