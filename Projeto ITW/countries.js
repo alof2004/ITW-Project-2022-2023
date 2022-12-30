@@ -44,7 +44,7 @@ var vm = function () {
     };
 
     $().ready(function () {
-        $("#tagsCountries").autocomplete({
+        $("#SearchBar").autocomplete({
             minLength: 3,
             source: function (request, response) {
                 $.ajax({
@@ -66,37 +66,6 @@ var vm = function () {
                 window.location.href = "countriesDetails.html?id=" + ui.item.name;
             },
         }).find("li").css({ width: "150px" });
-
-        $('#searchform').submit(function(event) {
-            // prevent the default behavior (submitting the form)
-            event.preventDefault();
-            // get the value of the search bar
-            let countryID = $('#tagsCountries').val();
-            // redirect to the athlete's page using the athlete ID
-            if (isValidID(countryID)) {
-            window.location.href = "countriesDetails.html?id=" + countryID;
-            } else {
-            // if the ID is not valid, show an error message
-            $('#error-message').html('<span class="text-danger"><i class="fa fa-warning" aria-hidden="true"></i> Invalid </span>'); 
-            }
-          });
-          // a function to check the validity of the athlete ID
-          function isValidID(id) {
-            // a variable to store the result of the API page existence check
-            var pageExists = false;
-            // make an HTTP GET request to the API URL
-            $.ajax({
-                url: "http://192.168.160.58/Olympics/api/Countries/" + id,
-                type: "GET",
-                async: false, // use the async option to make the request synchronous
-                success: function() {
-                // if the request is successful, the page exists
-                pageExists = true;
-          }
-            });
-            // return the result of the API page existence check
-            return pageExists;
-            }
     });
 
     self.toggleFavourite = function (id) {
@@ -137,6 +106,34 @@ var vm = function () {
             self.SetFavourites();
         });
     };
+    self.activateSearch = function (search, page) {
+        console.log('CALL: searchAthletes...');
+        var composedUri = "http://192.168.160.58/Olympics/api/Countries/SearchByName?q=" + search;
+        ajaxHelper(composedUri, 'GET').done(function (data) {
+            console.log("search Modalities", data);
+            hideLoading();
+            self.records(data.slice(0 + 24 * (page - 1), 24 * page));
+            console.log(self.records())
+            self.totalRecords(data.length);
+            self.currentPage(page);
+            if (page == 1) {
+                self.hasPrevious(false)
+            } else {
+                self.hasPrevious(true)
+            }
+            if (self.records() - 24 > 0) {
+                self.hasNext(true)
+            } else {
+                self.hasNext(false)
+            }
+            if (Math.floor(self.totalRecords() / 24) == 0) {
+                self.totalPages(1);
+            } else {
+                self.totalPages(Math.ceil(self.totalRecords() / 24));
+            }
+        });
+
+    };
 
 
     //--- Internal functions
@@ -172,7 +169,6 @@ var vm = function () {
             $("#myModal").modal('hide');
         })
     }
-
     function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
             sURLVariables = sPageURL.split('&'),
@@ -187,17 +183,36 @@ var vm = function () {
             }
         }
     };
-
+    self.pesquisa = function () {
+        self.pesquisado($("#SearchBar").val().toLowerCase());
+        if (self.pesquisado().length > 0) {
+            window.location.href = "modalities.html?search=" + self.pesquisado();
+        }
+    }
     //--- start ....
     showLoading();
+    $("#SearchBar").val(undefined);
+    self.pesquisado = ko.observable(getUrlParameter('search'));
+
     var pg = getUrlParameter('page');
-    console.log(pg);
-    if (pg == undefined)
-        self.activate(1);
-    else {
-        self.activate(pg);
+    if (undefined == undefined) {
+        if (self.pesquisado() == undefined) {
+            if (pg == undefined) {
+                if ('j' != undefined) self.activate(1);
+                else self.activate(1)
+            }
+            else {
+                if ('j' != undefined) self.activate(pg);
+                else self.activate(pg)
+            }
+        } else {
+            if (pg == undefined) self.activateSearch(self.pesquisado(), 1);
+            else self.activateSearch(self.pesquisado(), pg)
+            self.displayName = 'Results for ' + self.pesquisado()
+        }
+    } else {
+
     }
-    console.log("VM initialized!");
 };
 
 $(document).ready(function () {
@@ -208,53 +223,3 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 });
-
-var flag = true;
-var arrayFavsIDS = new Array();
-
-var arrayLocalStorage = new Array(localStorage.getItem("IDS"));
-
-arrayLocalStorage = arrayLocalStorage[0].split(",");
-
-function addfav(event) {
-    console.log("iM IN")
-    var clicked = event.currentTarget;
-    var outElemtn = clicked.parentElement.parentElement.parentElement;
-
-    console.log("heyheyhey" + $("#tab1").children("td:first"));
-
-
-    var infoTr = new Array(outElemtn.innerText.split("    "));
-    var stelem = infoTr[0][0];
-    console.log("abacate " + stelem);
-
-
-    actualArray = arrayLocalStorage;
-
-    clicked.classList.remove("fa-heart-o");
-    clicked.classList.add("fa-heart-danger");
-
-    if (flag) {
-        clicked.classList.remove("fa-heart-o");
-        clicked.classList.add("fa-heart-danger");
-        if (arrayFavsIDS.includes(stelem)) {
-            console.log("já existente no array!")
-        } else {
-            arrayFavsIDS.push(stelem)
-            localStorage.setItem("IDS", arrayFavsIDS);
-        }
-
-    } else {
-        clicked.classList.add("fa-heart-o");
-        clicked.classList.remove("fa-heart");
-        if (arrayFavsIDS.includes(stelem)) {
-            arrayFavsIDS.splice(arrayFavsIDS.indexOf(stelem), 1)
-            localStorage.setItem("IDS", arrayFavsIDS);
-        } else {
-            console.log("já existente no array!")
-        }
-    }
-
-    flag = !flag;
-    console.log(arrayFavsIDS);
-}

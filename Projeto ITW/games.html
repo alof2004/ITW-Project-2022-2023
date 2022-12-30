@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="search.css" />
     <style>
         body{
         background-color:#1F2022
@@ -257,11 +258,12 @@
             </div>
         </div>
         <!-- /ko -->
-        
-        <form class="form-inline py-2 my-lg-0 " id="searchform">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search and Select a Game (You can search by their ID)"
-                spellcheck="false" id="tagsGames" aria-label="Search" />         
-        </form>
+                <form action="javascript:"  style="padding:0px" id="forms1" class="search-bar">
+	                <input type="search" id="SearchBar"  aria-label="Search"  name="search" pattern=".*\S.*" required>
+	                <button id="button-addon1" data-bind="click:pesquisa" class="search-btn" type="submit">
+		                <span>Search</span>
+	                </button>
+                </form>
         <div id="butoes" style="padding-top:10px" class="container">
           <a id="butao" class="btn btn-border-4" style="margin:0px; width:150px; margin-right:15px; padding:5px" href="gamesSummer.html">SUMMER<img style="height:30px" src="../images/praia.png"/></a> 
                    <a id="butaoTodos" class="btn btn-border-4" style="margin:0px; width:100px; margin-right:15px; padding:5px" href="games.html">ALL<img style="height:30px"/></a>
@@ -269,7 +271,7 @@
    
         </div>
         <div id="error-message" class="ps-2 mb-2"></div>
-        <div id="container" data-bind="foreach:records" class="container row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
+        <div style="padding-bottom:60px" id="container" data-bind="foreach:records" class="container row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
             <div class="card" data-bind="style: {'backgroundImage': 'url('+ Logo +')'}">
                 <div class="card__header">
                 <h2 id="nome" data-bind="text:Name"></h2>
