@@ -186,6 +186,21 @@ var vm = function () {
             }
         }
     };
+    ko.bindingHandlers.safeSrc = {
+        update: function (element, valueAccessor) {
+            var options = valueAccessor();
+            var src = ko.unwrap(options.src);
+            if (src == null) {
+                $(element).attr('src', ko.unwrap(options.fallback));
+            }
+            $('<img />').attr('src', src).on('load', function () {
+                $(element).attr('src', src);
+            }).on('error', function () {
+                $(element).attr('src', ko.unwrap(options.fallback));
+            });
+
+        }
+    };
 
     self.pesquisa = function () {
         self.pesquisado($("#SearchBar").val().toLowerCase());

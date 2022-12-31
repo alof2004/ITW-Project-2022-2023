@@ -270,7 +270,7 @@
         </div>
     </nav>
     <!-- Working Area -->
-    <div class="container">
+    <div style="padding-top:10px" class="container">
         <div class="border-bottom py-2 mb-2">
             <h2 style="color: white;" data-bind="text:displayName"></h2>
         </div>
@@ -336,7 +336,7 @@
 
         <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records">
             <div class="tile"> 
-                <img data-bind="attr:{src: Photo}"/>
+                <img data-bind="safeSrc:{src: Photo,  fallback: '../images/no.png'}"/>
                 <div class="text">
                     <div id="tt" class="container">
                         <h1 data-bind="style: { 'font-size' : Name.length > 5 ? '24px' : '30px' }, text: Name"></h1>
