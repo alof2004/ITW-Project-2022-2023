@@ -241,7 +241,7 @@ var vm = function () {
         } else {
             if (pg == undefined) self.activateSearch(self.pesquisado(), 1);
             else self.activateSearch(self.pesquisado(), pg)
-            self.displayName = 'Results for ' + self.pesquisado()
+            self.displayName = 'Results for <b>' + self.pesquisado() + '</b>'
         }
     } else {
 
