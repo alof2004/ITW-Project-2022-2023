@@ -186,7 +186,7 @@ var vm = function () {
     self.pesquisa = function () {
         self.pesquisado($("#SearchBar").val().toLowerCase());
         if (self.pesquisado().length > 0) {
-            window.location.href = "modalities.html?search=" + self.pesquisado();
+            window.location.href = "countries.html?search=" + self.pesquisado();
         }
     }
     //--- start ....
