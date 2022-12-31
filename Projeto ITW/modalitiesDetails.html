@@ -82,7 +82,8 @@
                 <h2 style="color: white;" data-bind="text:Name()"></h2>
             </div>
             <div class="col pt-2" align="right">
-                <a href="./modalities.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+                <a onClick="history.go(-1)" class="btn btn-danger btn-sm small"><i class="fa fa-undo" aria-hidden="true"></i> Return</a>
+                <a href="./modalities.html" class="btn btn-dark btn-sm small"><i class="fa fa-list"></i> Back to List</a>
             </div>
         </div>
         <!-- ko if:Name().length > 0 -->

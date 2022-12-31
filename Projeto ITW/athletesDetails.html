@@ -11,14 +11,11 @@
     <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../lib/font-awesome/dist/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
-    <style>
-       
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
+            <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="../images/logo.png" height="30px" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -46,8 +43,8 @@
                 <h2 style="color: white;" data-bind="text:Name()"></h2>
             </div>
             <div class="col pt-2" align="right">
-                <a href="./athletes.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-                <a data-bind="attr: { href:'./gameFull.html?id=' + Id() }" class="btn btn-default btn-sm small"><i class="fa fa-th"></i> Full Setails</a>
+                <a onClick="history.go(-1)" class="btn btn-danger btn-sm small"><i class="fa fa-undo" aria-hidden="true"></i> Return</a>
+                <a href="./athletes.html" class="btn btn-dark btn-sm small"><i class="fa fa-list"></i> Back to List</a>
             </div>
         </div>
 
@@ -106,7 +103,7 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
                         <div data-bs-toggle="modal" data-bs-target="#CompetitionsModal" data-bind="visible: Competitions() != '' && Competitions() != null">
                             <div class="row mx-0  my-1 justify-content-center">
-                                <button style="text-align:center" class="btn third">Competitions</button>
+                                <button style="text-align:center !important" class="btn third">Competitions</button>
                             </div>
                         </div>
                     </div>
@@ -136,7 +133,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-12" data-bind="foreach:Games">
-                        <a class="btn margin-left slide" style="box-shadow:2px 2px black; height:40px; width:150px;" data-bind="attr: { href: './gameDetails.html?id='+Id }">
+                        <a class="btn margin-left slide" style="box-shadow:2px 2px black; height:40px; width:150px;" data-bind="attr: { href: './gamesDetails.html?id='+Id }">
                         <div data-bind="text: Name"></div>
                         </a>
                     </div>

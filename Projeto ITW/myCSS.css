@@ -146,6 +146,7 @@ li.page-item a {
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 2px 2px 1px black;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     border-color: #3498db;
