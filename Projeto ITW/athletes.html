@@ -98,7 +98,7 @@
             justify-content: center;
             align-items: center;
             height: 90px;
-            font-family: 'serif';
+            font-family: 'Questrial', sans-serif;
             padding-top: 5px;
             width: 245px;
         }
@@ -346,11 +346,11 @@
                     </div>
                     <div class="card__face card__face--back">
                         <div class="container" id="NAC">
-                            <p data-bind="style: { 'font-size' : Name.length > 25 ? '22px' : '30px' }, text: Name"></p>
+                            <p style="color:black !important; padding-top:5px" data-bind="style: { 'font-size' : Name.length > 25 ? '22px' : '30px' }, text: Name"></p>
                         </div>
                         <div class="container text-center" id="CA">
-                            <p><span>Genre: </span><span data-bind="html: $root.formatNameSex(Sex)"></span><span data-bind="text: Sex == 'M' ? 'Male' : 'Female'"></span></p>
-                            <p><span>Best Medal: </span><span id="med" data-bind="html: $root.formatPosition(BestPosition)"></span>
+                            <p><span style="color:black !important">Genre: </span><span  style="color:black !important" data-bind="html: $root.formatNameSex(Sex)"></span><span style="color:black !important" data-bind="text: Sex == 'M' ? 'Male' : 'Female'"></span></p>
+                            <p><span style="color:black !important">Best Medal: </span><span style="color:black !important" id="med" data-bind="html: $root.formatPosition(BestPosition)"></span>
                         </div>
                         <div id="butoes" class="container">
                             <!--nnnnn-->
