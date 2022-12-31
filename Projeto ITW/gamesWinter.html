@@ -14,27 +14,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="search.css" />
     <style>
         body{
         background-color:#1F2022
         }
         
-        .pagination > li > a{
-            color:black;
-            border-color: black;
+                .pagination > li > a{
+        color:black;
+        border-color: #28242c;
         }
-
         .pagination a:hover,
         .pagination .active a {
-            background-color: grey;
-            border-color:black;
+            background-color: #28242c;
+            border-color:#28242c;
             color: #ffffff;
         }
 
         .pagination a:focus {
-            background-color: black;
-            color: #ffffff;
+            background-color: #28242c;
+            color: black;
         }
+
 
         #container{
         margin:0px,0px,0px,0px;
@@ -288,19 +289,21 @@
             <!-- /ko -->
         </div>
     <!-- /ko -->
-        
-        <form class="form-inline py-2 my-lg-0 " id="searchform">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search and Select a Game (You can search by their ID)"
-                spellcheck="false" id="tagsGames" aria-label="Search" />         
-        </form>
-        <div id="butoes" style="padding-top:10px" class="container">
+                <form action="javascript:" style="padding:0px" id="forms1" class="search-bar">
+	                <input style="color:white !important" type="search" id="SearchBar"  aria-label="Search"  name="search" pattern=".*\S.*" required>
+	                <button style="color:white !important" id="button-addon1" data-bind="click:pesquisa" class="search-btn" type="submit">
+		                <span style="color:white !important">Search</span>
+	                </button>
+                </form>        
+        <div id="error-message" class="ps-2 mb-2"></div>
+        <div id="butoes" class="container">
           <a id="butao" class="btn btn-border-4" style="margin:0px; width:150px; margin-right:15px; padding:5px" href="gamesSummer.html">SUMMER<img style="height:30px" src="../images/praia.png"/></a> 
                    <a id="butaoTodos" class="btn btn-border-4" style="margin:0px; width:100px; margin-right:15px; padding:5px" href="games.html">ALL<img style="height:30px"/></a>
           <a id="butaoInverno" class="btn btn-border-4" style="width:150px;margin:0px;margin-right:15px;padding:5px" href="gameswinter.html">WINTER  <img style="height:30px" src="../images/inverno.png"/></a>
    
         </div>
-        <div id="error-message" class="ps-2 mb-2"></div>
-        <div id="container" data-bind="foreach:records" class="container row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
+
+        <div id="container" style="padding-top:7px;padding-bottom:60px" data-bind="foreach:records" class="container row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 justify-content-center">
             <div class="card" data-bind="style: {'backgroundImage': 'url('+ Logo +')'}">
                 <div class="card__header">
                 <h2 id="nome" data-bind="text:Name"></h2>
