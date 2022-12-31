@@ -109,9 +109,9 @@ var vm = function () {
     });
       
     //--- Page Events
-    self.activate = function (id) {
+    self.activate = function (id, sortby = 'NameUp') {
         console.log('CALL: getAthletes...');
-        var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
+        var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize() + "&sortby=" + sortby;
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
@@ -125,6 +125,7 @@ var vm = function () {
             self.SetFavourites();
         });
     };
+
     self.activateSearch = function (search, page) {
         console.log('CALL: searchAthletes...');
         var composedUri = "http://192.168.160.58/Olympics/api/Athletes/SearchByName?q=" + search;
@@ -212,6 +213,22 @@ var vm = function () {
         $("#pag").hide();
         $("#pagSearch").show();
     }
+    self.pesquisado = ko.observable(getUrlParameter('search'));
+    self.sortby = ko.observable(getUrlParameter('sortby'));
+    if (self.pesquisado() == undefined) {
+        if (pg == undefined) {
+            if (self.sortby() != undefined) self.activate(1, self.sortby());
+            else self.activate(1)
+        }
+        else {
+            if (self.sortby() != undefined) self.activate(pg, self.sortby());
+            else self.activate(pg)
+        }
+    } else {
+        if (pg == undefined) self.activateSearch(self.pesquisado(), 1);
+        else self.activateSearch(self.pesquisado(), pg)
+        self.displayName = 'Founded results for <b>' + self.pesquisado() + '</b>';
+    }
     self.pesquisa = function () {
         self.pesquisado($("#SearchBar").val().toLowerCase());
         if (self.pesquisado().length > 0) {
@@ -224,28 +241,27 @@ var vm = function () {
     
     //--- start ....
     showLoading();
-    $("#SearchBar").val(undefined);
+    $("#searchbarall").val(undefined);
     self.pesquisado = ko.observable(getUrlParameter('search'));
-    
     var pg = getUrlParameter('page');
-    if (undefined == undefined) {
-        if (self.pesquisado() == undefined) {
-            if (pg == undefined) {
-                if ('j' != undefined) self.activate(1);
-                else self.activate(1)
-            }
-            else {
-                if ('j' != undefined) self.activate(pg);
-                else self.activate(pg)
-            }
-        } else {
-            if (pg == undefined) self.activateSearch(self.pesquisado(), 1);
-            else self.activateSearch(self.pesquisado(), pg)
-            self.displayName = 'Results for <b>' + self.pesquisado() + '</b>'
+    console.log(pg);
+    self.pesquisado = ko.observable(getUrlParameter('search'));
+    self.sortby = ko.observable(getUrlParameter('sortby'));
+    if (self.pesquisado() == undefined) {
+        if (pg == undefined) {
+            if (self.sortby() != undefined) self.activate(1, self.sortby());
+            else self.activate(1)
+        }
+        else {
+            if (self.sortby() != undefined) self.activate(pg, self.sortby());
+            else self.activate(pg)
         }
     } else {
-
+        if (pg == undefined) self.activate2(self.pesquisado(), 1);
+        else self.activateSearch(self.pesquisado(), pg)
+        self.displayName = 'Founded results for <b>' + self.pesquisado() + '</b>';
     }
+
 }
 
 

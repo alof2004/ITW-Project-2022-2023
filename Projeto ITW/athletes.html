@@ -274,33 +274,43 @@
         <div class="border-bottom py-2 mb-2">
             <h2 style="color: white;" data-bind="text:displayName"></h2>
         </div>
-<!-- ko if:records().length > 0 -->
+        <!-- ko if:records().length > 0 -->
         <div class="row small">
-            <p class=" col-4 mr-auto pt-2">
-                <span style="color: white;" data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                <span style="color: white;" data-bind="html: 'Athletes: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+            <p class=" col-2 pt-2">
+                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+                <span data-bind="html: 'Athletes: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
             </p>
-            <!-- ko ifnot: pesquisado -->
-            <div class="col-8 my-0 pt-3">
-                <ul class="pagination float-end">
-                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                    <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Athletes.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                    <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Athletes.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
-                    <!-- /ko -->
-                    <!-- ko foreach: pageArray()-->
-                    <!-- ko if:$data == $parent.currentPage() -->
-                    <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
-                    <!-- /ko -->
-                    <!-- ko if:$data != $parent.currentPage() -->
-                    <li class="page-item"><a class="page-link" data-bind="attr: { href: './Athletes.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
-                    <!-- /ko -->
-                    <!-- /ko -->
-                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                    <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Athletes.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                    <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Athletes.html?page=' + totalPages() }">⇥</a></li>
-                    <!-- /ko -->
-                </ul>
+            <!-- ko ifnot:pesquisado -->
+            <div class="col-4 mr-auto pt-2">
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Filter:
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <ul class="dropdown-menu-dark dropdown-menu2" aria-labelledby="dropdownMenuButton2" style="list-style-type: none">
+                                <li>
+                                    <ul style="padding:20px" class="dropdown-menu-dark dropdown-menu2" style="list-style-type: none">
+                                        <li data-bind="">
+                                            <a class="dropdown-item"
+                                               data-bind="attr:{href:'./Athletes.html?sortby=id'}">Id</a>
+                                        </li>
+                                        <li data-bind="">
+                                            <a class="dropdown-item"
+                                               data-bind="attr:{href:'./Athletes.html?sortby=NameUp'}">Name Up</a>
+                                        </li>
+                                        <li data-bind="">
+                                            <a class="dropdown-item"
+                                               data-bind="attr:{href:'./Athletes.html?sortby=NameDn'}">Name Down</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
             <!-- /ko -->
             <!-- ko if: pesquisado -->
             <div class="col-8 my-0 pt-3">
@@ -324,8 +334,83 @@
                 </ul>
             </div>
             <!-- /ko -->
-        </div>
+            <!-- ko ifnot: pesquisado -->
+            <!-- Paginação_Athletes-->
+            <div class="col-lg-4 col-md-8 my-0 pt-3" style="text-align: center">
+                <ul class="pagination float-end">
+                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                    <li class="page-item float-end">
+                        <!-- ko ifnot: sortby -->
+                        <a class="page-link"
+                           title="First Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + '1',  rel:'prev'}">⇤</a>
+                        <!-- /ko -->
+                        <!-- ko if: sortby -->
+                        <a class="page-link"
+                           title="First Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + '1' + '&sortby=' + sortby(),  rel:'prev'}">⇤</a>
+                        <!-- /ko -->
+                    </li>
+                    <li class="page-item float-end">
+                        <!-- ko ifnot: sortby -->
+                        <a class="page-link"
+                           title="Previous Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + previousPage(),  rel:'prev'}">←</a>
+                        <!-- /ko -->
+                        <!-- ko if: sortby -->
+                        <a class="page-link"
+                           title="Previous Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + previousPage() + '&sortby=' + sortby(),  rel:'prev'}">←</a>
+                        <!-- /ko -->
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko foreach: pageArray()-->
+                    <!-- ko if:$data == $parent.currentPage() -->
+                    <li class="active page-item">
+                        <a class="page-link"
+                           data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a>
+                    </li>
+                    <!-- /ko -->
+                    <!-- ko if:$data != $parent.currentPage() -->
+                    <li class="page-item">
+                        <!-- ko ifnot:$parent.sortby() -->
+                        <a class="page-link" data-bind="attr: { href: './Athletes.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a>
+                        <!-- /ko -->
+                        <!-- ko if:$parent.sortby() -->
+                        <a class="page-link" data-bind="attr: { href: './Athletes.html?page=' + $data + '&sortby=' + $parent.sortby(), title:'Goto Page ' + $data }, text:$data"></a>
+                        <!-- /ko -->
+                    </li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                    <li class="page-item">
+                        <!-- ko ifnot: sortby -->
+                        <a class="page-link" title="Next Page" data-bind="attr: { href: './Athletes.html?page=' + nextPage(), rel:'next' }">→</a>
+                        <!-- /ko -->
+                        <!-- ko if: sortby -->
+                        <a class="page-link"
+                           title="Next Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + nextPage() + '&sortby=' + sortby(), rel:'next' }">→</a>
+                        <!-- /ko -->
+                    </li>
+                    <li class="page-item">
+                        <!-- ko ifnot: sortby -->
+                        <a class="page-link"
+                           title="Last Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + totalPages() }">⇥</a>
+                        <!-- /ko -->
+                        <!-- ko if: sortby -->
+                        <a class="page-link"
+                           title="Last Page"
+                           data-bind="attr: { href: './Athletes.html?page=' + totalPages() + '&sortby=' + sortby()}">⇥</a>
+                        <!-- /ko -->
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </div>
             <!-- /ko -->
+        </div>
+    <!--/ko -->
         <form action="javascript:"  id="forms1" class="search-bar">
 	         <input type="search" id="SearchBar" spellcheck="false"  aria-label="Search"  name="search" pattern=".*\S.*" required>
 	            <button id="button-addon1" data-bind="click:pesquisa" class="search-btn" type="submit">
@@ -334,7 +419,7 @@
         </form>
         <div id="error-message" class="ps-2 mb-2"></div>
 
-        <div  class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records" style="padding-bottom:50px">
+        <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records" style="padding-bottom:50px">
             <div>
                 <div class="card">
                     <div class="card__face card__face--front">
