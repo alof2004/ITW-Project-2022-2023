@@ -157,7 +157,6 @@
   transition: all 1s ease;
 }
 
-
     </style>
 </head>
 <body>
@@ -266,7 +265,23 @@
                               Number of Medals by Country over all Olympic Games editions                    
                           </div>
                           <div class="card-body">
-                              <canvas id="Chart6"></canvas>
+                            <table class="table table-striped">
+                              <thead>
+                              <th class="bg-dark text-light">CountryName</th>
+                              <th class="bg-dark text-light"><img style="height: 30px;" src="medalGold.png" /> Gold Medals</th>
+                              <th class="bg-dark text-light"><img style="height: 30px;" src="medalSilver.png" /> Silver Medals</th>
+                              <th class="bg-dark text-light"><img style="height: 30px;" src="medalBronze.png" /> Bronze Medals</th>
+                              </thead>
+                              <tbody data-bind="foreach: Medals">
+                                  <tr>
+                                      <td data-bind="text: CountryName"></td>
+                                      <td data-bind="text: Medals[0].Counter"></td>
+                                      <td data-bind="text: Medals[1].Counter"></td>
+                                      <td data-bind="text: Medals[2].Counter"></td>
+                                  </tr>
+                              </tbody>
+                  
+                          </table>                  
                           </div>                    
                       </div>
                   </div>
@@ -276,7 +291,6 @@
            </div>
         </div>
      </section>
-
 
 
     <!-- End of Work Area -->
@@ -302,8 +316,8 @@
     <script src="../lib/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="Stats.js"></script>
 </body>
 
