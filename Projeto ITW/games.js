@@ -63,7 +63,7 @@ var vm = function () {
                 });
             },
             select: function (event, ui) {
-                window.location.href = "gameDetails.html?id=" + ui.item.name;
+                window.location.href = "gamesDetails.html?id=" + ui.item.name;
             },
         }).find("li").css({ width: "150px" });
     });

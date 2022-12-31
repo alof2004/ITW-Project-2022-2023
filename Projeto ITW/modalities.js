@@ -44,7 +44,7 @@ var vm = function () {
     };
 
     $().ready(function () {
-        $("#tagsModalities").autocomplete({
+        $("#SearchBar").autocomplete({
             minLength: 2,
             source: function (request, response) {
                 $.ajax({
@@ -67,36 +67,6 @@ var vm = function () {
             },
         }).find("li").css({ width: "150px" });
 
-        $('#searchform').submit(function (event) {
-            // prevent the default behavior (submitting the form)
-            event.preventDefault();
-            // get the value of the search bar
-            let modalityID = $('#tagsModalities').val();
-            // redirect to the athlete's page using the athlete ID
-            if (isValidID(modalityID)) {
-                window.location.href = "modalitiesDetails.html?id=" + modalityID;
-            } else {
-                // if the ID is not valid, show an error message
-                $('#error-message').html('<span class="text-danger"><i class="fa fa-warning" aria-hidden="true"></i> Invalid </span>');
-            }
-        });
-        // a function to check the validity of the athlete ID
-        function isValidID(id) {
-            // a variable to store the result of the API page existence check
-            var pageExists = false;
-            // make an HTTP GET request to the API URL
-            $.ajax({
-                url: "http://192.168.160.58/Olympics/api/Modalities/" + id,
-                type: "GET",
-                async: false, // use the async option to make the request synchronous
-                success: function () {
-                    // if the request is successful, the page exists
-                    pageExists = true;
-                }
-            });
-            // return the result of the API page existence check
-            return pageExists;
-        }
     });
 
     self.toggleFavourite = function (id) {
