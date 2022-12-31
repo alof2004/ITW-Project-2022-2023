@@ -114,6 +114,7 @@ $(document).ready(function () {
             },
             select: function (event, ui) {
                 if (ui.item.value1 === 'Athletes') {
+                    console.log("estouaqui")
                     window.location.href = "athletesDetails.html?id=" + ui.item.value;
                 }
                 else if (ui.item.value1 === 'Countries') {
@@ -173,45 +174,7 @@ $(document).ready(function () {
             }
         };
         //
-        $('#searchAll').autocomplete({
-            // source: self.availableTags(),
-            max: 50,
-            minLength: 3,
-            source:
-                function (request, response) {
-                    $.ajax({
-                        type: "GET",
-                        url: `http://192.168.160.58/Olympics/api/Utils/Search?`,
-                        data: {
-                            q: $('#searchAll').val()
-                        },
-                        success: function (data) {
-
-                            if (!data.length) {
-                                var result = [{
-                                    label: 'No matches found',
-                                    value: response.term
-                                }];
-                                response(result);
-                            } else {
-
-                                var nData = $.map(data, function (value, key) {
-                                    return {
-                                        label: value.Name,
-                                        value: value.Name
-                                    }
-                                });
-                                results = $.ui.autocomplete.filter(nData, request.term);
-                                response(results.slice(0, 20));
-                            }
-                        },
-                        error: function () {
-                            alert("error!");
-                        }
-                    })
-                },
-
-        });
+       
         //-----END-SEARCH------//
 
         //---START-SHOW-FIRST-PAGE---//
