@@ -281,7 +281,7 @@
                 <div class="card__header">
                 <h2 id="nome" data-bind="text:Name"></h2>
                 <p id="cidade" data-bind="text:CityName"></p>
-                <a  data-bind="attr: { href:'./gameDetails.html?id=' + Id }">
+                <a  data-bind="attr: { href:'./gamesDetails.html?id=' + Id }">
                 <button class="card__header-button">Detalhes</button></a>
                 <button data-bind="click: () => $parent.toggleFavourite(Id), attr : { 'id': 'favourite_' + Id }" class="btn btn-favourite">
                     <i style="font-size:200%" data-bind="attr: {'class': $parent.favourites().includes(Id)? 'fa fa-heart text-danger' : 'fa fa-heart-o'}" class="fa fa-heart-o" id="heart" title="Selecione para adicionar aos favoritos"></i>
