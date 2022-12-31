@@ -240,56 +240,26 @@
         
 
 
-
-
-        var Counter6 = [];
-        var Name6 = [];
-
-        $.ajax({
-        type: 'GET',
-        url: 'http://192.168.160.58/Olympics/api/statistics/Medals_Country',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        success: function (data, status, xhr) {
-
-            var athData = data;
-
-            athData.forEach(element => {
-            Counter6.push(element.Medals.reduce((accum, ele) => ele.Counter + accum, 0));
-            Name6.push(element.CountryName);
-            });
-
-            createBarGraph6(Counter6, Name6);
-
+        $(document).ready(function () {
+            function VM() {
+                var self = this;
+                self.Medals = ko.observableArray([])
+          
+                $.ajax({
+                    url: "http://192.168.160.58/Olympics/api/Statistics/Medals_Country",
+                    type: "GET",
+                    dataType: "JSON",
+                    data: JSON.stringify({}),
+                    success: function (data) {
+                        console.log(data)
+                        self.Medals(data)
+                    },
+                    complete: function () {
+                        console.log("complete")
+                    }
+          
+                })
             }
-        });
-
-        
-
-        function createBarGraph6(Counter, Name) {
-        let barChart6 = new Chart("Chart6", {
-            type: "line",
-            data: {
-                labels: Name6,
-                datasets: [{
-                data: Counter6,
-                label: 'Number of Medals by Country over all Olympic Games editions',
-                backgroundColor: ['rgba(75, 192, 192, 0.2)','rgba(54, 162, 235, 0.2)',],
-                borderColor: ['rgb(75, 192, 192)','rgb(54, 162, 235)',],
-                borderWidth: 1
-            }]
-            },
-            options:{
-                animations: {
-                tension: {
-                    duration: 1000,
-                    easing: 'linear',
-                    from: 1,
-                    to: 0,
-                    loop: true
-                }
-                },
-        }
-        });
-        }
+            ko.applyBindings(new VM());
+          })
+          
