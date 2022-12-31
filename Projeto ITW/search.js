@@ -114,7 +114,6 @@ $(document).ready(function () {
             },
             select: function (event, ui) {
                 if (ui.item.value1 === 'Athletes') {
-                    console.log("estouaqui")
                     window.location.href = "athletesDetails.html?id=" + ui.item.value;
                 }
                 else if (ui.item.value1 === 'Countries') {
