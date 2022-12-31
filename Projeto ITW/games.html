@@ -235,12 +235,13 @@
         <div class="border-bottom py-2 mb-2">
             <h2 style="color: white;" data-bind="text:displayName"></h2>
         </div>
-        <!-- ko if:records().length > 0 -->
+<!-- ko if:records().length > 0 -->
         <div class="row small">
-            <p class=" col-4 mr-auto pt-2">
-                <span style="color: white;" data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                <span style="color: white;" data-bind="html: 'Games: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+            <p style="color:white !important" class=" col-4 mr-auto pt-2">
+                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+                <span data-bind="html: 'Athletes: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
             </p>
+            <!-- ko ifnot: pesquisado -->
             <div class="col-8 my-0 pt-3">
                 <ul class="pagination float-end">
                     <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
@@ -261,8 +262,31 @@
                     <!-- /ko -->
                 </ul>
             </div>
+            <!-- /ko -->
+            <!-- ko if: pesquisado -->
+            <div class="col-8 my-0 pt-3">
+                <ul class="pagination float-end">
+                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                    <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './games.html?search='+ pesquisado() + '&page=1',  rel:'prev'}">⇤</a></li>
+                    <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './games.html?search='+ pesquisado() + '&page=' + previousPage(),  rel:'prev'}">←</a></li>
+                    <!-- /ko -->
+                    <!-- ko foreach: pageArray()-->
+                    <!-- ko if:$data == $parent.currentPage() -->
+                    <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
+                    <!-- /ko -->
+                    <!-- ko if:$data != $parent.currentPage() -->
+                    <li class="page-item"><a class="page-link" data-bind="attr: { href: './games.html?search='+ $parent.pesquisado() + '&page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                    <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './games.html?search='+ pesquisado() + '&page=' + nextPage(), rel:'next' }">→</a></li>
+                    <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './games.html?search='+ pesquisado() + '&page=' + totalPages() }">⇥</a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+            <!-- /ko -->
         </div>
-        <!-- /ko -->
+    <!-- /ko -->
                 <form action="javascript:"  style="padding:0px" id="forms1" class="search-bar">
 	                <input type="search" id="SearchBar"  aria-label="Search"  name="search" pattern=".*\S.*" required>
 	                <button id="button-addon1" data-bind="click:pesquisa" class="search-btn" type="submit">
