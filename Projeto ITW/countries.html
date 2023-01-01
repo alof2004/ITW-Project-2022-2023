@@ -319,7 +319,7 @@
 	                </button>
                 </form>
 
-        <div style="padding-bottom:50px" class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" data-bind="foreach: records">
+        <div style="padding-bottom:50px" class="row d-grid d-sm-flex row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 justify-content-center" data-bind="foreach: records">
             <div style="justify-content: space-evenly;">
                 <div class="card">
                    <div >
@@ -327,8 +327,8 @@
                     <img id="bandeira" data-bind="attr:{src: Flag}" style="height:120px; width:200px;" class="card-img-top img-fluid">
                     <div class="card-body" style="align-content:center; margin-bottom: 0px;">
                         <p>
-                            <span data-bind="text:Name"></span>
-                            <span data-bind="text:IOC"></span>
+                            <span style="color:black" data-bind="text:Name"></span>
+                            <span style="color:black" data-bind="text:IOC"></span>
                         </p>
                     </div>
                         <div class="card-group" style="justify-content:center; vertical-align:middle; margin-top:-15px">
