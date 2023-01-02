@@ -5,7 +5,7 @@ var vm = function () {
     var self = this;
     self.baseUri = ko.observable('http://192.168.160.58/Olympics/api/athletes');
     //self.baseUri = ko.observable('http://localhost:62595/api/athletes');
-    self.displayName = 'Olympic Games editions List';
+    self.displayName = 'Olympic Athletes List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
@@ -229,6 +229,28 @@ var vm = function () {
         else self.activateSearch(self.pesquisado(), pg)
         self.displayName = 'Founded results for <b>' + self.pesquisado() + '</b>';
     }
+    showLoading();
+    $("#searchbarall").val(undefined);
+    self.pesquisado = ko.observable(getUrlParameter('search'));
+    var pg = getUrlParameter('page');
+    console.log(pg);
+    self.pesquisado = ko.observable(getUrlParameter('search'));
+    self.sortby = ko.observable(getUrlParameter('sortby'));
+    if (self.pesquisado() == undefined) {
+        if (pg == undefined) {
+            if (self.sortby() != undefined) self.activate(1, self.sortby());
+            else self.activate(1)
+        }
+        else {
+            if (self.sortby() != undefined) self.activate(pg, self.sortby());
+            else self.activate(pg)
+        }
+    } else {
+        if (pg == undefined) self.activate2(self.pesquisado(), 1);
+        else self.activateSearch(self.pesquisado(), pg)
+        self.displayName = 'Founded results for <b>' + self.pesquisado() + '</b>';
+    }
+
     self.pesquisa = function () {
         self.pesquisado($("#SearchBar").val().toLowerCase());
         if (self.pesquisado().length > 0) {
@@ -262,24 +284,23 @@ var vm = function () {
         self.displayName = 'Founded results for <b>' + self.pesquisado() + '</b>';
     }
 
+    ko.bindingHandlers.safeSrc = {
+        update: function (element, valueAccessor) {
+            var options = valueAccessor();
+            var src = ko.unwrap(options.src);
+            if (src == null) {
+                $(element).attr('src', ko.unwrap(options.fallback));
+            }
+            $('<img />').attr('src', src).on('load', function () {
+                $(element).attr('src', src);
+            }).on('error', function () {
+                $(element).attr('src', ko.unwrap(options.fallback));
+            });
+
+        }
+    };
 }
 
-
-ko.bindingHandlers.safeSrc = {
-    update: function (element, valueAccessor) {
-        var options = valueAccessor();
-        var src = ko.unwrap(options.src);
-        if (src == null) {
-            $(element).attr('src', ko.unwrap(options.fallback));
-        }
-        $('<img />').attr('src', src).on('load', function () {
-            $(element).attr('src', src);
-        }).on('error', function () {
-            $(element).attr('src', ko.unwrap(options.fallback));
-        });
-
-    }
-};
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());

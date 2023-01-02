@@ -131,7 +131,7 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <span data-bind="text:Name"></span><span>'s Location</span>
                 <div>
-                    <iframe style="width:90%; height: 600px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/place?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&q=' + CountryName() + City()}"></iframe>
+                    <iframe style="width:90%; height: 600px;" class="myFrame" data-bind="attr:{src:'https://www.google.com/maps/embed/v1/view?key=AIzaSyAJLUALI140YZxYaSh3TN8hedXJEsm+1Bkg&center=' + Lat() +',' + Lon() +'&zoom=17&maptype=satellite'}"></iframe>
                 </div>
             </div>
           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12" id="pie" style="background-color: #1F2022; width: 400px; height: 600px; padding:0px"></div>

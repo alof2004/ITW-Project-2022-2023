@@ -43,6 +43,10 @@ function removeFav(Id) {
 
     localStorage.setItem("fav", JSON.stringify(fav));
 }
+function goTo(Id) {
+    window.location.href = "athletesDetails.html?id=" + Id
+}
+
 function removeFav2(Id) {
     console.log("remove fav2")
     $("#fav2-" + Id).remove();
@@ -56,7 +60,9 @@ function removeFav2(Id) {
 
     localStorage.setItem("fav2", JSON.stringify(fav2));
 }
-
+function goTo2(Id) {
+    window.location.href = "countriesDetails.html?id=" + Id
+}
 function removeFav3(Id) {
     console.log("remove fav3")
     $("#fav3-" + Id).remove();
@@ -69,6 +75,9 @@ function removeFav3(Id) {
         fav3.splice(index, 1);
 
     localStorage.setItem("fav3", JSON.stringify(fav3));
+}
+function goTo3(Id) {
+    window.location.href = "competitionsDetails.html?id=" + Id
 }
 
 function removeFav4(Id) {
@@ -84,6 +93,9 @@ function removeFav4(Id) {
 
     localStorage.setItem("fav4", JSON.stringify(fav4));
 }
+function goTo4(Id) {
+    window.location.href = "gamesDetails.html?id=" + Id
+}
 function removeFav5(Id) {
     console.log("remove fav5")
     $("#fav5-" + Id).remove();
@@ -96,6 +108,9 @@ function removeFav5(Id) {
         fav5.splice(index, 1);
 
     localStorage.setItem("fav5", JSON.stringify(fav5));
+}
+function goTo5(Id) {
+    window.location.href = "modalitiesDetails.html?id=" + Id
 }
 
 
@@ -124,7 +139,9 @@ $(document).ready(function () {
                         <td class="align-middle">${data.Name}</td>
                         <td class="align-middle">${data.Sex}</td>
                         <td class="text-end">
+                            <a class="btn btn-default btn-outline-secondary btn-sm btn" onclick="goTo(${i})"><i class="fa fa-info" title="Selecione para aceder aos detalhes deste atleta"></i></a>
                             <a class="btn btn-default btn-outline-danger btn-sm btn-favourite" onclick="removeFav(${i})"><i class="fa fa-heart" title="Selecione para remover dos favoritos"></i></a>
+
                         </td>
                     </tr>`
                 )
@@ -158,6 +175,7 @@ for (const i of fav2) {
                         <td class="align-middle">${data.Name}</td>
                         <td class="align-middle">${data.IOC}</td>
                         <td class="text-end">
+                            <a class="btn btn-default btn-outline-secondary btn-sm btn" onclick="goTo2(${i})"><i class="fa fa-info" title="Selecione para aceder aos detalhes deste país"></i></a>
                             <a class="btn btn-default btn-outline-danger btn-sm btn-favourite" onclick="removeFav2(${i})"><i class="fa fa-heart" title="Selecione para remover dos favoritos"></i></a>
                         </td>
                     </tr>`
@@ -187,6 +205,7 @@ for (const i of fav3) {
                         <td class="align-middle">${data.Name}</td>
                         <td class="align-middle">${data.Modality}</td>
                         <td class="text-end">
+                            <a class="btn btn-default btn-outline-secondary btn-sm btn" onclick="goTo3(${i})"><i class="fa fa-info" title="Selecione para aceder aos detalhes desta competição"></i></a>
                             <a class="btn btn-default btn-outline-danger btn-sm btn-favourite" onclick="removeFav3(${i})"><i class="fa fa-heart" title="Selecione para remover dos favoritos"></i></a>
                         </td>
                     </tr>`
@@ -218,6 +237,7 @@ for (const i of fav4) {
                         <td class="align-middle">${data.City}</td>
                         <td class="align-middle">${data.CountryName}</td>
                         <td class="text-end">
+                            <a class="btn btn-default btn-outline-secondary btn-sm btn" onclick="goTo4(${i})"><i class="fa fa-info" title="Selecione para aceder aos detalhes deste jogo"></i></a>
                             <a class="btn btn-default btn-outline-danger btn-sm btn-favourite" onclick="removeFav4(${i})"><i class="fa fa-heart" title="Selecione para remover dos favoritos"></i></a>
                         </td>
                     </tr>`
@@ -246,6 +266,7 @@ for (const i of fav5) {
                         <td class="align-middle">${i}</td>
                         <td class="align-middle">${data.Name}</td>
                         <td class="text-end">
+                            <a class="btn btn-default btn-outline-secondary btn-sm btn" onclick="goTo5(${i})"><i class="fa fa-info" title="Selecione para aceder aos detalhes desta modalidade"></i></a>
                             <a class="btn btn-default btn-outline-danger btn-sm btn-favourite" onclick="removeFav5(${i})"><i class="fa fa-heart" title="Selecione para remover dos favoritos"></i></a>
                         </td>
                     </tr>`

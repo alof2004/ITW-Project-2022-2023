@@ -20,6 +20,8 @@ var vm = function () {
     self.Athletes = ko.observable('');
     self.Modalities = ko.observable('');
     self.Medals = ko.observable('');
+    self.Lat = ko.observable('');
+    self.Lon = ko.observable('');
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getGame...');
@@ -38,6 +40,8 @@ var vm = function () {
             self.Athletes(data.Athletes);
             self.Modalities(data.Modalities);
             self.Medals(data.Medals);
+            self.Lat(data.Lat);
+            self.Lon(data.Lon);
         });
     };
 

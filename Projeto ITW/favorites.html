@@ -45,7 +45,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
+                    <li id="atletas" class="nav-item active"><a class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
                     <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
                     <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
                     <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
@@ -130,6 +130,7 @@
                                     <th scope="col">Nome</th>
                                     <th scope="col">Nacionalidade</th>
                                     <th scope="col" class="text-right"></th>
+                                    <th scope="col" class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody id="table-favourites">
@@ -137,6 +138,7 @@
                                     <td class="align-middle" data-bind="text:Id"></td>
                                     <td class="align-middle" data-bind="text:Name"></td>
                                     <td class="align-middle" data-bind="text:Nationality"></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -258,7 +260,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title">Favorite Games</h5>
+            <h5 class="modal-title">Favorite Modalities</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
