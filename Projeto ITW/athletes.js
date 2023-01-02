@@ -281,7 +281,7 @@ var vm = function () {
     } else {
         if (pg == undefined) self.activate2(self.pesquisado(), 1);
         else self.activateSearch(self.pesquisado(), pg)
-        self.displayName = 'Founded results for <b>' + self.pesquisado() + '</b>';
+        self.displayName = 'Founded results for ' + self.pesquisado();
     }
 
     ko.bindingHandlers.safeSrc = {
