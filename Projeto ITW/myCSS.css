@@ -19,7 +19,7 @@
     transition:0.5s
 }
 
-#jogos:hover {
+#jogos:hover,#jogos1:hover,#jogos2:hover {
     text-shadow: 0 0 3px #5FC77C, 0 0 7px #5FC77C, 0 0 20px #5FC77C;color:#5FC77C;
     transition:0.5s
 }

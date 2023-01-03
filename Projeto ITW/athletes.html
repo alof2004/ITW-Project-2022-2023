@@ -243,15 +243,23 @@
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container" style="padding:2px">
             <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
                     <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
                     <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
-                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li class="nav-item dropdown">
+                        <a id="jogos" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fa fa-map-marker text-success"></i> Games
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a id="jogos1" class="dropdown-item" href="games.html"><i class="fa fa-map-marker text-success"></i> Games List</a></li>
+                          <li><a id="jogos2" class="dropdown-item" href="map.html"><i class="fa fa-globe text-success" aria-hidden="true"></i> Map</a></li>
+                        </ul>
+                    </li>
                     <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
                     <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
                     <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
@@ -264,7 +272,7 @@
                                 class="form-control rounded-start rounded-end rounded-0 " placeholder="Search or Select..."
                                 aria-label="Search" aria-describedby="button-addon2">
                         </div>
-                    </div>
+                        </div>
                 </form>
             </div>
         </div>
@@ -283,14 +291,13 @@
             <!-- ko ifnot:pesquisado -->
             <div class="col-4 mr-auto pt-2">
                 <div class="dropdown btn-group dropend">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Filter
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Order
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-bind="">
                     <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=id'}">Id</a></li>
-                    <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=NameUp'}">Name Up</a></li>
-                    <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=NameDn'}">Name Down</a></li>
+                    <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=NameUp'}">A-Z</a></li>
+                    <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=NameDn'}">Z-A</a></li>
                     <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=HeightUp'}">Height Up</a></li>
-                    <li><a class="dropdown-item" data-bind="attr:{href:'./Athletes.html?sortby=HeightDn'}">Height Down</a></li>
                   </ul>
                 </div>
             </div>

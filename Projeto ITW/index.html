@@ -230,15 +230,23 @@ h5{
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container" style="padding:2px">
             <a class="navbar-brand" href="index.html" tabindex="Olympics"><img src="https://www.freepnglogos.com/uploads/olympic-rings-png/olympic-rings-denver-fact-colorado-hates-the-olympic-games-the-4.png" height="30px" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li id="atletas" class="nav-item active"><a style="text-shadow: ;" class="nav-link" aria-current="page" href="athletes.html"><i class="fa fa-user-o text-warning"></i> Athletes</a></li>
                     <li id="competicoes" class="nav-item"><a class="nav-link" aria-current="page" href="competitions.html"><i class="fa fa-trophy"></i> Competitions</a></li>
                     <li id="paises" class="nav-item"><a class="nav-link" aria-current="page" href="countries.html"><i class=" fa fa-flag-o text-danger"></i> Countries</a></li>
-                    <li id="jogos" class="nav-item"><a class="nav-link" aria-current="page" href="games.html"><i class="fa fa-map-marker text-success"></i> Games</a></li>
+                    <li class="nav-item dropdown">
+                        <a id="jogos" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <i class="fa fa-map-marker text-success"></i> Games
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a id="jogos1" class="dropdown-item" href="games.html"><i class="fa fa-map-marker text-success"></i> Games List</a></li>
+                          <li><a id="jogos2" class="dropdown-item" href="map.html"><i class="fa fa-globe text-success" aria-hidden="true"></i> Map</a></li>
+                        </ul>
+                    </li>
                     <li id="modalidades" class="nav-item"><a class="nav-link" aria-current="page" href="modalities.html"><i class="fa fa-soccer-ball-o text-primary"></i> Modalities</a></li>
                     <li id="estatisticas" class="nav-item"><a class="nav-link" aria-current="page" href="Stats.html"><i class="fa fa-bar-chart" style="color: pink;" aria-hidden="true"></i> Statistics</a></li>
                     <li id="perguntas" class="nav-item"><a class="nav-link" aria-current="page" href="faqs.html"><i class="fa fa-question-circle-o" style="color:aliceblue" aria-hidden="true"></i> FAQs</a></li>
@@ -257,7 +265,70 @@ h5{
         </div>
     </nav>
     <!-- Working Area -->
-    <br />
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner" >
+                    <div class="carousel-item active">
+                        <a href="gamesDetails.html?id=51">
+                        <img src="../images/image4.jpg" class="d-block w-100 " alt="...">
+                        </a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 id="um">Olympic Games Sochi 2014</h5>
+                        <p></p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="gamesDetails.html?id=52">
+                        <img src="../images/image5.jpg" class="d-block w-100 " alt="..."></a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 id="dois">Olympic Games Rio 2016</h5>
+                        <p></p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="gamesDetails.html?id=50">
+                        <img src="../images/image6.jpg" class="d-block w-100 " alt="..."></a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 id="tres">Olympic Games London 2012</h5>
+                        <p></p>
+                    </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+ </div>
+
+    <b class="hr" id="divisor"></b>
+        <div class="container">
+        <p class="textlong">
+             The Olympic Games or Olympics are the leading international sporting events featuring summer and winter sports competitions in which 
+            thousands of athletes from around the world participate in a variety of competitions.
+             The Olympic Games are considered the world's foremost sports competition with more than 200 teams, representing sovereign states and 
+            territories, participating.            
+        </p>
+        <p class="textlong">
+            The Olympic Games are normally held every four years, and since 1994, have alternated between the Summer and Winter Olympics every 
+            two years during the four-year period.
+             Their creation was inspired by the ancient Olympic Games, held in Olympia, Greece from the 8th century BC to the 4th century AD. 
+            Baron Pierre de Coubertin founded the International Olympic Committee (IOC - governing body of the Olympic Movement) in 1894, 
+            leading to the first modern Games in Athens in 1896.
+        </p>
+        <p class="textlong">
+        </p>
+
+    </div>
+
+    <b class="hr" id="divisor"></b>
     <p style="text-align:center;  padding-bottom:0px; color: white; font-size: 30px; font-family: Questrial; " class="container"><span>Podium of the best countries (with the most medals)</span></p> 
 
 <div class="scoreboard" style="padding-top:0px;padding-bottom:10px">
@@ -343,77 +414,9 @@ h5{
       </div>
     </div>
    </div>
-    <b class="hr" id="divisor"></b>   
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner" >
-                    <div class="carousel-item active">
-                        <a href="gamesDetails.html?id=51">
-                        <img src="../images/image4.jpg" class="d-block w-100 " alt="...">
-                        </a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 id="um">Olympic Games Sochi 2014</h5>
-                        <p></p>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="gamesDetails.html?id=52">
-                        <img src="../images/image5.jpg" class="d-block w-100 " alt="..."></a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 id="dois">Olympic Games Rio 2016</h5>
-                        <p></p>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="gamesDetails.html?id=50">
-                        <img src="../images/image6.jpg" class="d-block w-100 " alt="..."></a>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 id="tres">Olympic Games London 2012</h5>
-                        <p></p>
-                    </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
- </div>
-
-    <b class="hr" id="divisor"></b>    
-    
-    <div class="container">
-        <p class="textlong">
-             The Olympic Games or Olympics are the leading international sporting events featuring summer and winter sports competitions in which 
-            thousands of athletes from around the world participate in a variety of competitions.
-             The Olympic Games are considered the world's foremost sports competition with more than 200 teams, representing sovereign states and 
-            territories, participating.            
-        </p>
-        <p class="textlong">
-            The Olympic Games are normally held every four years, and since 1994, have alternated between the Summer and Winter Olympics every 
-            two years during the four-year period.
-             Their creation was inspired by the ancient Olympic Games, held in Olympia, Greece from the 8th century BC to the 4th century AD. 
-            Baron Pierre de Coubertin founded the International Olympic Committee (IOC - governing body of the Olympic Movement) in 1894, 
-            leading to the first modern Games in Athens in 1896.
-        </p>
-        <p class="textlong">
-        </p>
-
-    </div>
-
-    <b class="hr" id="divisor"></b>    
+   <b class="hr" id="divisor"></b>
 
 
- 
-<br>
-<br>
 
     <!-- End of Working Area -->
     <nav class="navbar navbar-dark bg-dark fixed-bottom">
@@ -440,7 +443,7 @@ h5{
     <script src="search.js"></script>
     <script>
         var sum = 1000; // rank 1.
-        var time = 250;
+        var time = 8000;
 
         $(document).ready(function () {
         $(".js-podium").each(function () {

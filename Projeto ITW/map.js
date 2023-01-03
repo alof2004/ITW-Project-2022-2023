@@ -37,7 +37,7 @@ function activate() {
                 shadowSize: [41, 41]
             });
             console.log(CircuitId)
-            L.marker([Lat,Lng],{icon: myIcon}).on("click", showLocation).bindPopup("<a style='text-decoration:none; 'href='./gameDetails.html?id=" + CircuitId+ "'"+ "'" + "'><b>" + Name + "</b></a><br>" + Location + ", "+ Country).addTo(map);
+            L.marker([Lat,Lng],{icon: myIcon}).on("click", showLocation).bindPopup("<a style='text-decoration:none; 'href='./gamesDetails.html?id=" + CircuitId+ "'"+ "'" + "'><b>" + Name + "</b></a><br>" + Location + ", "+ Country).addTo(map);
         }
         
     });

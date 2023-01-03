@@ -45,7 +45,7 @@ var vm = function () {
 
     $().ready(function () {
         $("#SearchBar").autocomplete({
-            minLength: 3,
+            minLength: 2,
             source: function (request, response) {
                 $.ajax({
                     url: "http://192.168.160.58/Olympics/api/Countries/SearchByName?q=" + request.term,
